@@ -4,234 +4,126 @@
 
 {% block content %}
 
-<section class="container py-5 mb-5">
-    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+<!-- Banner -->
+<section class="hero">
+
+    <div id="demo"
+        class="carousel slide"
+        data-bs-ride="carousel">
 
         <div class="carousel-inner">
+
             <div class="carousel-item active">
-                <img src="{{ url_for('static', filename='imagens/keyframe_1.png') }}" class="d-block mx-auto w-75"
-                    alt="Porta Principal">
+                <img src="{{ url_for('static', filename='imagens/banner/banner_bolsa.jpeg') }}"
+                    class="banner-img"
+                    alt="Banner Bolsa">
             </div>
 
             <div class="carousel-item">
-                <img src="{{url_for('static', filename='imagens/keyframe_2.png')}}" class="d-block mx-auto w-75"
-                    alt="Fachada">
+                <img src="{{ url_for('static', filename='imagens/banner/banner_conjunto.jpeg') }}"
+                    class="banner-img"
+                    alt="Banner Conjunto">
             </div>
 
             <div class="carousel-item">
-                <img src="{{url_for('static', filename='imagens/keyframe_3.png')}}" class="d-block mx-auto w-75"
-                    alt="Área Comum">
+                <img src="{{ url_for('static', filename='imagens/banner/banner_sapato.jpeg') }}"
+                    class="banner-img"
+                    alt="Banner Sapato">
             </div>
 
-            <div class="carousel-item">
-                <img src="{{url_for('static', filename='imagens/keyframe_4.png')}}" class="d-block mx-auto w-75"
-                    alt="Sala de Aula">
-            </div>
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <!-- Controles -->
+        <button class="carousel-control-prev"
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide="prev">
+
             <span class="carousel-control-prev-icon"></span>
+
         </button>
 
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <button class="carousel-control-next"
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide="next">
+
             <span class="carousel-control-next-icon"></span>
+
         </button>
 
     </div>
+
 </section>
 
-<div class="container py-4 d-flex flex-column ">
 
-    <section class="mb-5">
-        <h3>Cursos Oferecidos</h3>
+<!-- Grade de categorias -->
+<section class="container py-5">
 
-        <div class="row g-4">
+    <div class="row row-cols-2 row-cols-md-5 g-4">
 
-            <div class="col-md-3">
-                <a href="#animacao2d" class="text-decoration-none">
-                    <article class="curso-card">
-                        <img src="{{url_for('static', filename='imagens/1.png')}}" alt="Animação 2D">
-                        <div class="overlay">
-                            <h5>Animação 2D</h5>
-                        </div>
-                    </article>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="#animacao3d" class="text-decoration-none">
-                    <article class="curso-card">
-                        <img src="{{url_for('static', filename='imagens/2.png')}}" alt="Animação 3D">
-                        <div class="overlay">
-                            <h5>Animação 3D</h5>
-                        </div>
-                    </article>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="#designdepersonagens" class="text-decoration-none">
-                    <article class="curso-card">
-                        <img src="{{url_for('static', filename='imagens/3.png')}}" alt="Design">
-                        <div class="overlay">
-                            <h5>Design de Personagens</h5>
-                        </div>
-                    </article>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="#efeitosvisuais" class="text-decoration-none">
-                    <article class="curso-card">
-                        <img src="{{url_for('static', filename='imagens/4.png')}}" alt="VFX">
-                        <div class="overlay">
-                            <h5>Efeitos Visuais</h5>
-                        </div>
-                    </article>
-                </a>
-            </div>
-
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/bolsa.png') }}"
+                class="categoria-img"
+                alt="Bolsa">
         </div>
-    </section>
-        <p>
-            A área de cursos da nossa universidade foi projetada 
-            para ser um ecossistema de aprendizado dinâmico, onde
-             a teoria acadêmica e a prática técnica se encontram 
-             em perfeita harmonia. O foco central não é apenas o 
-             ensino de ferramentas isoladas, mas sim a formação 
-             de uma base sólida em narrativa visual e fundamentos
-              de movimento que acompanham o estudante por toda a
-               sua jornada profissional. Cada trilha de aprendizado
-                é estruturada para incentivar a experimentação, 
-                permitindo que a criatividade flua sem as amarras
-                 de métodos convencionais e rígidos.
-        </p>
-        <p>
-            O currículo se destaca pela integração constante entre 
-            diferentes frentes de produção, refletindo exatamente
-             como funciona a indústria no mundo real. Os estudantes 
-             são imersos em ambientes que simulam estúdios profissionais,
-              onde a colaboração é o pilar principal de cada projeto
-               desenvolvido. Esse formato garante que, ao avançar
-                pelos módulos, o aluno desenvolva uma visão macroscópica 
-                de como uma ideia abstrata se transforma em um produto
-                 final polido, pronto para ganhar vida nas telas.
-        </p>
-        <p>
-            A infraestrutura tecnológica oferecida serve como um 
-            suporte invisível, mas poderoso, para o desenvolvimento
-             das competências. Com acesso a recursos de ponta e
-              ambientes otimizados para a criação digital, o 
-              aprendizado se torna intuitivo e focado na excelência 
-              técnica. A filosofia da instituição preza por um design
-               de currículo "limpo" e eficiente, onde cada etapa do
-                conhecimento é apresentada de forma clara, evitando
-                 sobrecargas desnecessárias e priorizando a absorção
-                  profunda de cada conceito abordado.
-        </p>
-        <p>
-            Por fim, o ambiente acadêmico promove um senso estético
-             refinado, incentivando os alunos a buscarem identidades 
-             visuais autênticas e inovadoras. Mais do que apenas 
-             absorver conteúdo, o objetivo é que cada indivíduo saia
-              preparado para ditar tendências e dominar as linguagens
-               visuais contemporâneas. A universidade se consolida,
-                assim, como um celeiro de talentos prontos para enfrentar
-                 os desafios de um mercado que exige, acima de tudo,
-                  versatilidade e uma sensibilidade artística apurada.
-        </p>
-    </section>
 
-    <section class="mb-5">
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/calca.png') }}"
+                class="categoria-img"
+                alt="Calça">
+        </div>
 
-        <article>
-            <h5 id="animacao2d">Animação 2D</h5>
-            <p>
-                A alma da narrativa visual ganha vida através do movimento clássico e das técnicas
-                digitais contemporâneas. Nesta área, exploramos desde os fundamentos tradicionais
-                dos 12 princípios da animação até o uso avançado de rigging e animação vetorial. O
-                foco é capacitar o artista a criar personagens expressivos e fluidez narrativa,
-                dominando o ritmo e o tempo para contar histórias cativantes em curta-metragens,
-                séries e publicidade.
-            </p>
-        </article>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/camisa.png') }}"
+                class="categoria-img"
+                alt="Camisa">
+        </div>
 
-        <article>
-            <h5 id="animacao3d">Animação 3D</h5>
-            <p>
-                Nesta disciplina, a tecnologia e a arte se encontram para criar profundidade, realismo
-                e mundos imersivos. Os estudantes mergulham no universo da modelagem, texturização,
-                iluminação e animação de personagens em ambientes tridimensionais. Utilizando os mesmos
-                softwares e pipelines dos grandes estúdios internacionais, o objetivo é dominar a criação
-                de ativos complexos e performances digitais que saltam aos olhos, preparando o aluno para
-                os setores de cinema de animação e indústria de jogos.
-            </p>
-        </article>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/casaco.png') }}"
+                class="categoria-img"
+                alt="Casaco">
+        </div>
 
-        <article>
-            <h5 id="designdepersonagens">Design de Personagens</h5>
-            <p>
-                Mais do que apenas desenhar, o design de personagens é a arte de construir personalidades
-                memoráveis através da forma, silhueta e cor. O estudo abrange anatomia, psicologia das cores
-                e storytelling visual, permitindo que o artista crie figuras que comunicam sua história antes
-                mesmo de dizerem a primeira palavra. É o processo de dar identidade e carisma a heróis, vilões
-                e criaturas, garantindo que sejam funcionais tanto para a animação quanto para a conexão
-                emocional com o público.
-            </p>
-        </article>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/chapeu.png') }}"
+                class="categoria-img"
+                alt="Chapéu">
+        </div>
 
-        <article>
-            <h5 id="efeitosvisuais">Efeitos Visuais</h5>
-            <p>
-                Os efeitos visuais são a ponte entre o real e o impossível, permitindo que qualquer visão
-                imaginativa ganhe as telas. Esta área foca na integração de elementos digitais com filmagens
-                reais, abrangendo técnicas de composição, simulação de partículas (como fogo, água e fumaça),
-                chroma key e rastreamento de movimento. O foco é o domínio técnico necessário para criar
-                ilusões perfeitas e espetáculos visuais que definem o cinema de ação e fantasia moderno.
-            </p>
-        </article>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/cinto.png') }}"
+                class="categoria-img"
+                alt="Cinto">
+        </div>
 
-    </section>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/joias.png') }}"
+                class="categoria-img"
+                alt="Joias">
+        </div>
 
-    <section class="mb-5">
-        <h2 class="titulo-principal">Visão da Universidade</h2>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/maquiagem.png') }}"
+                class="categoria-img"
+                alt="Maquiagem">
+        </div>
 
-        <p>
-            Ser reconhecida como a principal referência na formação de talentos para a indústria criativa global,
-            liderando a fronteira do ensino de animação e novas tecnologias. Almejamos ser o elo definitivo entre
-            o potencial criativo do estudante e as maiores produções do mercado audiovisual mundial, transformando
-            a forma como o mundo consome e interage com conteúdos digitais.
-        </p>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/pijama.png') }}"
+                class="categoria-img"
+                alt="Pijama">
+        </div>
 
-        <p>
-            Para isso, buscamos estabelecer um ecossistema de aprendizado contínuo que transcenda as fronteiras da
-            sala de aula, integrando pesquisa, experimentação artística e parcerias estratégicas com os principais
-            estúdios do setor. Nosso compromisso é consolidar uma comunidade de artistas que, armados com ética e
-            domínio técnico, sejam capazes de elevar o padrão da narrativa visual, deixando uma marca indelével
-            na cultura e na tecnologia das gerações futuras.
-        </p>
+        <div class="col">
+            <img src="{{ url_for('static', filename='imagens/home/salto.png') }}"
+                class="categoria-img"
+                alt="Salto">
+        </div>
 
-    </section>
-    
-        <section class="mb-5">
-        <h2 class="titulo-principal">Propósito da Universidade</h2>
-        <p>
-            Nosso propósito fundamental é democratizar o acesso à alta tecnologia e ao conhecimento artístico,
-            transformando a paixão por criar em uma carreira sólida e sustentável. Acreditamos que cada indivíduo
-            possui uma voz única e que a animação é a ferramenta definitiva para traduzir o abstrato em realidades
-            visíveis. Existimos para garantir que o talento não encontre barreiras técnicas, fornecendo os meios
-            necessários para que mentes inquietas possam moldar o futuro do entretenimento com originalidade e
-            excelência.
-        </p>
+    </div>
 
-        <p>
-            Mais do que formar técnicos, aspiramos cultivar contadores de histórias que compreendam o impacto social
-            e cultural de suas criações. Nosso compromisso é com o desenvolvimento humano e criativo, fomentando um
-            ambiente onde o erro é visto como parte da evolução e a colaboração é a base de toda grande obra. No Studio
-            Keyframe, nosso propósito é ser o catalisador que transforma sonhos em frames, e estudantes em artistas
-            capazes de emocionar, educar e inspirar o mundo através da imagem em movimento.
-        </p>
-    </section>
+</section>
 
-</div>
 {% endblock %}

@@ -1,3 +1,15 @@
+/* ===== VARIÁVEIS ===== */
+
+:root {
+    --cor-branco: #ffffff;
+    --cor-creme: #EBD4A1;
+    --cor-dourado: #C6A75E;
+    --cor-marrom: #806D49;
+    --cor-carvao: #292929;
+    --cor-preto: rgba(0, 0, 0, 0.3);
+}
+
+
 /* ===== RESET ===== */
 
 * {
@@ -7,8 +19,8 @@
 }
 
 img {
-    max-width: 100%;
     display: block;
+    max-width: 100%;
 }
 
 ul {
@@ -24,92 +36,113 @@ a {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f8f8;
-    color: #1d1d1d;
+    background-color: var(--cor-creme);
+    color: var(--cor-carvao);
 }
 
 
 /* ===== HEADER ===== */
 
-.header {
+header {
     position: sticky;
     top: 0;
     z-index: 999;
 
-    padding: 16px 0;
-
-    background-color: #ffffff;
-
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #1d1d1d;
+    background-color: var(--cor-carvao);
+    box-shadow: 0 0.125rem 0.625rem var(--cor-preto);
 }
 
 .logo-img {
-    width: 80px;
+    width: 8.75rem;
     height: auto;
-    object-fit: cover;
+
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
 }
 
 
 /* ===== NAVBAR ===== */
 
-.nav-link {
-    color: #1d1d1d;
+.navbar .navbar-nav .nav-link {
+    color: var(--cor-creme);
+
     font-weight: 500;
+    text-transform: uppercase;
+
     transition: color 0.3s ease;
 }
 
-.nav-link:hover {
-    color: #98c3a1;
-}
-
-.navbar .nav-link {
-    color: white;
-    text-transform: uppercase;
-}
-
-.navbar .nav-link:hover {
-    color: #d4af37;
+.navbar .navbar-nav .nav-link:hover {
+    color: var(--cor-dourado);
 }
 
 
-/* ===== BUSCA ===== */
+/* ===== BARRA DE BUSCA ===== */
 
 .search-bar {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
     width: 40%;
+    max-width: 31.25rem;
+
+    padding: 0.375rem 1.25rem;
+
+    background-color: var(--cor-dourado);
+    border-radius: 3.125rem;
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    left: 1.25rem;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--cor-carvao);
 }
 
 .search-bar input {
-    border-radius: 30px;
-    padding: 10px 15px;
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--cor-carvao);
+
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
-.search-bar button {
-    border-radius: 30px;
-    padding: 8px 18px;
+.search-bar input::placeholder {
+    color: var(--cor-carvao);
+    opacity: 0.8;
 }
 
 
 /* ===== HERO ===== */
 
 .hero {
-    padding: 100px 0;
+    padding: 6.25rem 0;
 }
 
 .hero-tag {
     display: inline-block;
 
-    padding: 8px 16px;
+    padding: 0.5rem 1rem;
 
-    background-color: #dceee1;
-    color: #2f6d3f;
+    background-color: var(--cor-dourado);
+    border-radius: 62.4375rem;
 
-    border-radius: 999px;
+    color: var(--cor-branco);
 
     font-size: 0.9rem;
     font-weight: 600;
@@ -119,24 +152,27 @@ body {
 /* ===== FOOTER ===== */
 
 .footer-custom {
-    background-color: #8B7853;
-    padding: 40px 20px;
+    padding: 2.5rem 1.25rem;
+
+    background-color: var(--cor-marrom);
 }
 
 .social-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 80px;
     flex-wrap: wrap;
+
+    gap: 5rem;
 }
 
 .social-item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
 
-    color: #f3e3b0;
+    color: var(--cor-creme);
+
     font-size: 1.5rem;
 
     transition: 0.3s;
@@ -147,22 +183,22 @@ body {
 }
 
 .social-item:hover {
-    color: white;
+    color: var(--cor-branco);
     transform: scale(1.05);
 }
 
 
 /* ===== RESPONSIVO ===== */
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
 
     .search-bar {
         width: 100%;
-        margin: 20px 0;
+        margin: 0.625rem 0;
     }
 
     .social-container {
-        gap: 30px;
+        gap: 1.875rem;
     }
 
     .social-item {
@@ -172,4 +208,30 @@ body {
     .social-item i {
         font-size: 1.5rem;
     }
+}
+
+
+
+
+
+.hero {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+    margin: 0;
+    padding: 0;
+}
+
+.banner-img {
+    width: 100%;
+    height: 90vh;
+
+    display: block;
+
+    object-fit: cover;
 }
