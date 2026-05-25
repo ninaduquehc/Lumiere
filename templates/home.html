@@ -7,46 +7,35 @@
 <!-- Banner -->
 <section class="hero">
 
-    <div id="demo"
-        class="carousel slide"
-        data-bs-ride="carousel">
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-inner">
 
             <div class="carousel-item active">
-                <img src="{{ url_for('static', filename='imagens/banner/banner_bolsa.jpeg') }}"
-                    class="banner-img"
+                <img src="{{ url_for('static', filename='imagens/banner/banner_bolsa.jpeg') }}" class="banner-img"
                     alt="Banner Bolsa">
             </div>
 
             <div class="carousel-item">
-                <img src="{{ url_for('static', filename='imagens/banner/banner_conjunto.jpeg') }}"
-                    class="banner-img"
+                <img src="{{ url_for('static', filename='imagens/banner/banner_conjunto.jpeg') }}" class="banner-img"
                     alt="Banner Conjunto">
             </div>
 
             <div class="carousel-item">
-                <img src="{{ url_for('static', filename='imagens/banner/banner_sapato.jpeg') }}"
-                    class="banner-img"
+                <img src="{{ url_for('static', filename='imagens/banner/banner_sapato.jpeg') }}" class="banner-img"
                     alt="Banner Sapato">
             </div>
 
         </div>
 
         <!-- Controles -->
-        <button class="carousel-control-prev"
-            type="button"
-            data-bs-target="#demo"
-            data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
 
             <span class="carousel-control-prev-icon"></span>
 
         </button>
 
-        <button class="carousel-control-next"
-            type="button"
-            data-bs-target="#demo"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
 
             <span class="carousel-control-next-icon"></span>
 
@@ -62,64 +51,79 @@
 
     <div class="row row-cols-2 row-cols-md-5 g-4">
 
+        <!-- BOLSAS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/bolsa.png') }}"
-                class="categoria-img"
-                alt="Bolsa">
+            <a href="{{ url_for('catalogo') }}#bolsas">
+                <img src="{{ url_for('static', filename='imagens/home/bolsa.png') }}" class="categoria-img" alt="Bolsa">
+            </a>
         </div>
 
+        <!-- CALÇAS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/calca.png') }}"
-                class="categoria-img"
-                alt="Calça">
+            <a href="{{ url_for('catalogo') }}#calcas">
+                <img src="{{ url_for('static', filename='imagens/home/calca.png') }}" class="categoria-img" alt="Calça">
+            </a>
         </div>
 
+        <!-- CAMISAS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/camisa.png') }}"
-                class="categoria-img"
-                alt="Camisa">
+            <a href="{{ url_for('catalogo') }}#camisas">
+                <img src="{{ url_for('static', filename='imagens/home/camisa.png') }}" class="categoria-img"
+                    alt="Camisa">
+            </a>
         </div>
 
+        <!-- CASACOS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/casaco.png') }}"
-                class="categoria-img"
-                alt="Casaco">
+            <a href="{{ url_for('catalogo') }}#casacos">
+                <img src="{{ url_for('static', filename='imagens/home/casaco.png') }}" class="categoria-img"
+                    alt="Casaco">
+            </a>
         </div>
 
+        <!-- CHAPÉUS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/chapeu.png') }}"
-                class="categoria-img"
-                alt="Chapéu">
+            <a href="{{ url_for('catalogo') }}#chapeus">
+                <img src="{{ url_for('static', filename='imagens/home/chapeu.png') }}" class="categoria-img"
+                    alt="Chapéu">
+            </a>
         </div>
 
+        <!-- CINTOS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/cinto.png') }}"
-                class="categoria-img"
-                alt="Cinto">
+            <a href="{{ url_for('catalogo') }}#cintos">
+                <img src="{{ url_for('static', filename='imagens/home/cinto.png') }}" class="categoria-img" alt="Cinto">
+            </a>
         </div>
 
+        <!-- JOIAS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/joias.png') }}"
-                class="categoria-img"
-                alt="Joias">
+            <a href="{{ url_for('catalogo') }}#joias">
+                <img src="{{ url_for('static', filename='imagens/home/joias.png') }}" class="categoria-img" alt="Joias">
+            </a>
         </div>
 
+        <!-- MAQUIAGENS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/maquiagem.png') }}"
-                class="categoria-img"
-                alt="Maquiagem">
+            <a href="{{ url_for('catalogo') }}#maquiagens">
+                <img src="{{ url_for('static', filename='imagens/home/maquiagem.png') }}" class="categoria-img"
+                    alt="Maquiagem">
+            </a>
         </div>
 
+        <!-- PIJAMAS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/pijama.png') }}"
-                class="categoria-img"
-                alt="Pijama">
+            <a href="{{ url_for('catalogo') }}#pijamas">
+                <img src="{{ url_for('static', filename='imagens/home/pijama.png') }}" class="categoria-img"
+                    alt="Pijama">
+            </a>
         </div>
 
+        <!-- SAPATOS -->
         <div class="col">
-            <img src="{{ url_for('static', filename='imagens/home/salto.png') }}"
-                class="categoria-img"
-                alt="Salto">
+            <a href="{{ url_for('catalogo') }}#sapatos">
+                <img src="{{ url_for('static', filename='imagens/home/salto.png') }}" class="categoria-img" alt="Salto">
+            </a>
         </div>
 
     </div>

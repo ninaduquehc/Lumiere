@@ -1,10 +1,51 @@
 {% extends "base.html" %}
 
-{% block titulo %}/Home{% endblock %}
+{% block titulo %}/Login{% endblock %}
 
 {% block content %}
 
+<section class="login-section">
 
+    <div class="login-box">
 
+        <!-- LADO ESQUERDO -->
+        <div class="login-banner">
+            <img src="{{ url_for('static', filename='imagens/bem-vindo.png') }}"
+                alt="Bem-vindo">
+        </div>
+
+        <!-- LADO DIREITO -->
+        <div class="login-form-area">
+
+            <h1>Criar Conta</h1>
+
+            <form action="" method="POST" class="login-form">
+
+                <input type="text"
+                    name="nome"
+                    placeholder="NOME:"
+                    required>
+
+                <input type="email"
+                    name="email"
+                    placeholder="EMAIL"
+                    required>
+
+                <input type="password"
+                    name="senha"
+                    placeholder="SENHA:"
+                    required>
+
+                <button type="submit">
+                    ENTER
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}

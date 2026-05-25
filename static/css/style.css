@@ -1,16 +1,22 @@
-/* ===== VARIÁVEIS ===== */
+/* ========================================
+   VARIÁVEIS
+======================================== */
 
 :root {
     --cor-branco: #ffffff;
     --cor-creme: #EBD4A1;
     --cor-dourado: #C6A75E;
+    --cor-dourado-login: #ceb16a;
     --cor-marrom: #806D49;
+    --cor-marrom-input: #8a754b;
     --cor-carvao: #292929;
-    --cor-preto: rgba(0, 0, 0, 0.3);
+    --cor-preto-transparente: rgba(0, 0, 0, 0.3);
 }
 
 
-/* ===== RESET ===== */
+/* ========================================
+   RESET
+======================================== */
 
 * {
     margin: 0;
@@ -32,22 +38,37 @@ a {
 }
 
 
-/* ===== BODY ===== */
-
-h1, h2, h3, .titulo {
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 2px;
-    font-weight: 600;
-}
+/* ========================================
+   BODY
+======================================== */
 
 body {
     font-family: 'Poppins', sans-serif;
+
     background-color: var(--cor-creme);
     color: var(--cor-carvao);
+
+    overflow-x: hidden;
 }
 
 
-/* ===== HEADER ===== */
+/* ========================================
+   TIPOGRAFIA
+======================================== */
+
+h1,
+h2,
+h3,
+.titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 0.125rem;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
 
 header {
     position: sticky;
@@ -55,12 +76,17 @@ header {
     z-index: 999;
 
     background-color: var(--cor-carvao);
-    box-shadow: 0 0.125rem 0.625rem var(--cor-preto);
+
+    box-shadow: 0 0.125rem 0.625rem var(--cor-preto-transparente);
 }
 
+
+/* ========================================
+   LOGO
+======================================== */
+
 .logo-img {
-    width: 8.75rem;
-    height: auto;
+    width: 9rem;
 
     transition: transform 0.3s ease;
 }
@@ -70,7 +96,9 @@ header {
 }
 
 
-/* ===== NAVBAR ===== */
+/* ========================================
+   NAVBAR
+======================================== */
 
 .navbar .navbar-nav .nav-link {
     color: var(--cor-creme);
@@ -86,7 +114,9 @@ header {
 }
 
 
-/* ===== BARRA DE BUSCA ===== */
+/* ========================================
+   BARRA DE BUSCA
+======================================== */
 
 .search-bar {
     position: relative;
@@ -95,17 +125,18 @@ header {
     align-items: center;
 
     width: 40%;
-    max-width: 31.25rem;
+    max-width: 32rem;
 
-    padding: 0.375rem 1.25rem;
+    padding: 0.4rem 1.2rem;
 
     background-color: var(--cor-dourado);
-    border-radius: 3.125rem;
+
+    border-radius: 5rem;
 }
 
 .search-bar .search-icon {
     position: absolute;
-    left: 1.25rem;
+    left: 1.2rem;
 
     display: flex;
     align-items: center;
@@ -125,6 +156,7 @@ header {
 
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
+
     text-align: center;
 }
 
@@ -134,10 +166,29 @@ header {
 }
 
 
-/* ===== HERO ===== */
+/* ========================================
+   HERO / BANNER
+======================================== */
 
 .hero {
-    padding: 6.25rem 0;
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+    margin: 0;
+    padding: 0;
+}
+
+.banner-img {
+    width: 100%;
+    height: 90vh;
+
+    object-fit: cover;
 }
 
 .hero-tag {
@@ -146,7 +197,8 @@ header {
     padding: 0.5rem 1rem;
 
     background-color: var(--cor-dourado);
-    border-radius: 62.4375rem;
+
+    border-radius: 99rem;
 
     color: var(--cor-branco);
 
@@ -155,21 +207,172 @@ header {
 }
 
 
+/* ========================================
+   TÍTULOS DE CATEGORIA
+======================================== */
+
 .titulo-categoria {
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+
     text-align: center;
-
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-
-    font-size: 4rem;
 
     color: var(--cor-carvao);
 
-    letter-spacing: 6px;
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    letter-spacing: 0.5rem;
 }
 
 
-/* ===== FOOTER ===== */
+/* ========================================
+   GRID
+======================================== */
+
+.row {
+    align-items: stretch;
+}
+
+.col {
+    display: flex;
+}
+
+
+/* ========================================
+   IMAGENS
+======================================== */
+
+.col .categoria-img {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+
+    transition: transform 0.3s ease;
+}
+
+.col .categoria-img:hover {
+    transform: scale(1.02);
+}
+
+
+/* ========================================
+   LOGIN
+======================================== */
+
+.login-section {
+    width: 100%;
+
+    padding: 4rem 2rem;
+
+    background-color: var(--cor-creme);
+}
+
+.login-box {
+    max-width: 90rem;
+
+    margin: 0 auto;
+    padding: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+
+    background-color: var(--cor-dourado-login);
+}
+
+.login-banner {
+    flex: 1;
+}
+
+.login-banner img {
+    width: 100%;
+}
+
+.login-form-area {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-area h1 {
+    margin-bottom: 4rem;
+
+    color: var(--cor-carvao);
+
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.login-form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.5rem;
+}
+
+.login-form input {
+    width: 80%;
+
+    padding: 1.2rem 1.5rem;
+
+    border: none;
+    outline: none;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-branco);
+
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.login-form input::placeholder {
+    color: var(--cor-branco);
+}
+
+.login-form button {
+    margin-top: 2rem;
+
+    width: 14rem;
+
+    padding: 1rem;
+
+    border: none;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-branco);
+
+    font-size: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+.login-form button:hover {
+    transform: scale(1.03);
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
 
 .footer-custom {
     padding: 2.5rem 1.25rem;
@@ -204,21 +407,45 @@ header {
 
 .social-item:hover {
     color: var(--cor-branco);
+
     transform: scale(1.05);
 }
 
 
-/* ===== RESPONSIVO ===== */
+/* ========================================
+   RESPONSIVO
+======================================== */
 
-@media (max-width: 48rem) {
+@media (max-width: 62rem) {
 
     .search-bar {
         width: 100%;
-        margin: 0.625rem 0;
+
+        margin: 0.6rem 0;
+    }
+
+    .banner-img {
+        height: 60vh;
+    }
+
+    .titulo-categoria {
+        letter-spacing: 0.2rem;
+    }
+
+    .login-box {
+        flex-direction: column;
+    }
+
+    .login-form-area {
+        width: 100%;
+    }
+
+    .login-form input {
+        width: 100%;
     }
 
     .social-container {
-        gap: 1.875rem;
+        gap: 2rem;
     }
 
     .social-item {
@@ -228,30 +455,5 @@ header {
     .social-item i {
         font-size: 1.5rem;
     }
-}
 
-
-
-
-
-.hero {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.carousel,
-.carousel-inner,
-.carousel-item {
-    margin: 0;
-    padding: 0;
-}
-
-.banner-img {
-    width: 100%;
-    height: 90vh;
-
-    display: block;
-
-    object-fit: cover;
 }
