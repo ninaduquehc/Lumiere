@@ -1,47 +1,19 @@
 from flask import Flask, render_template
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
 
 # ========================================
-# PRODUTOS
+# MYSQL
 # ========================================
 
-produtos = {
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'fatec'
+app.config['MYSQL_DB'] = 'lumiere'
 
-    1: {
-        "id": 1,
-        "nome": "BOLSA DO TIPO X",
-        "descricao": "NOME Y DESCRIÇÃO W",
-        "preco": "R$ 599,90",
-        "imagem": "imagens/bolsas/bolsa_1.png"
-    },
-
-    2: {
-        "id": 2,
-        "nome": "BOLSA PREMIUM",
-        "descricao": "MODELO ELEGANCE",
-        "preco": "R$ 799,90",
-        "imagem": "imagens/bolsas/bolsa_2.png"
-    },
-
-    3: {
-        "id": 3,
-        "nome": "COLAR LUXURY",
-        "descricao": "ACABAMENTO DOURADO",
-        "preco": "R$ 299,90",
-        "imagem": "imagens/joias/colar_1.png"
-    },
-
-    4: {
-        "id": 4,
-        "nome": "CINTO CLASSIC",
-        "descricao": "COURO LEGÍTIMO",
-        "preco": "R$ 199,90",
-        "imagem": "imagens/acessorios/cinto_1.png"
-    }
-
-}
+mysql = MySQL(app)
 
 
 # ========================================
@@ -51,9 +23,7 @@ produtos = {
 @app.route("/")
 def home():
 
-    return render_template(
-        "home.html"
-    )
+    return render_template("home.html")
 
 
 # ========================================
@@ -63,19 +33,28 @@ def home():
 @app.route("/catalogo")
 def catalogo():
 
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("SELECT * FROM produtos")
+
+    dados = cursor.fetchall()
+
+    produtos = []
+
+    for produto in dados:
+
+        produtos.append({
+            "id": produto[0],
+            "nome": produto[1],
+            "descricao": produto[2],
+            "preco": produto[3],
+            "imagem": produto[4]
+        })
+
     return render_template(
         "catalogo.html",
-        produtos=produtos.values()
+        produtos=produtos
     )
-
-# ========================================
-# LOGIN
-# ========================================
-
-@app.route("/login")
-def login():
-
-    return render_template("login.html")
 
 
 # ========================================
@@ -85,13 +64,37 @@ def login():
 @app.route("/item/<int:id_produto>")
 def item(id_produto):
 
-    produto = produtos.get(id_produto)
+    cursor = mysql.connection.cursor()
+
+    cursor.execute(
+        "SELECT * FROM produtos WHERE id = %s",
+        [id_produto]
+    )
+
+    dado = cursor.fetchone()
+
+    produto = {
+        "id": dado[0],
+        "nome": dado[1],
+        "descricao": dado[2],
+        "preco": dado[3],
+        "imagem": dado[4]
+    }
 
     return render_template(
         "item.html",
-        produto=produto,
-        produtos=produtos.values()
+        produto=produto
     )
+
+
+# ========================================
+# LOGIN
+# ========================================
+
+@app.route("/login")
+def login():
+
+    return render_template("login.html")
 
 
 # ========================================
