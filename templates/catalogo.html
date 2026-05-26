@@ -1,485 +1,419 @@
 {% extends "base.html" %}
 
-{% block titulo %}/Home{% endblock %}
+{% block titulo %}/Catálogo{% endblock %}
 
 {% block content %}
-<section>
 
+<section class="catalogo-section">
+
+    <!-- BOLSAS -->
     <div>
-        <h1 id="bolsas" class="titulo-categoria">BOLSAS</h1>
+
+        <h1 id="bolsas" class="titulo-categoria">
+            BOLSAS
+        </h1>
 
         <section class="container py-5">
 
             <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                <div class="col">
-                    <img src="{{ url_for('static', filename='imagens/bolsas/bolsa_1.png') }}" class="categoria-img"
-                        alt="Bolsa">
-                </div>
+                {% for produto in produtos %}
 
-                <div class="col">
-                    <img src="{{ url_for('static', filename='imagens/bolsas/bolsa_2.png') }}" class="categoria-img"
-                        alt="Bolsa">
-                </div>
+                    {% if 'bolsas' in produto.imagem %}
 
-                <div class="col">
-                    <img src="{{ url_for('static', filename='imagens/bolsas/bolsa_3.png') }}" class="categoria-img"
-                        alt="Bolsa">
-                </div>
+                    <div class="col">
 
-                <div class="col">
-                    <img src="{{ url_for('static', filename='imagens/bolsas/bolsa_4.png') }}" class="categoria-img"
-                        alt="Bolsa">
-                </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                <div class="col">
-                    <img src="{{ url_for('static', filename='imagens/bolsas/bolsa_5.png') }}" class="categoria-img"
-                        alt="Bolsa">
-                </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
 
-                <div class="col">
-                    <img src="{{ url_for('static', filename='imagens/bolsas/bolsa_6.png') }}" class="categoria-img"
-                        alt="Bolsa">
-                </div>
+                        </a>
+
+                    </div>
+
+                    {% endif %}
+
+                {% endfor %}
 
             </div>
 
+        </section>
+
+    </div>
 
 
 
-            <div>
-                <h1 id="calcas" class="titulo-categoria">CALÇAS</h1>
+    <!-- CALÇAS -->
+    <div>
 
-                <section class="container py-5">
+        <h1 id="calcas" class="titulo-categoria">
+            CALÇAS
+        </h1>
 
-                    <div class="row row-cols-2 row-cols-md-3 g-4">
+        <section class="container py-5">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/calcas/calca_1.png') }}"
-                                class="categoria-img" alt="Calça">
-                        </div>
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/calcas/calca_2.png') }}"
-                                class="categoria-img" alt="Calça">
-                        </div>
+                {% for produto in produtos %}
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/calcas/calca_3.png') }}"
-                                class="categoria-img" alt="Calça">
-                        </div>
+                    {% if 'calcas' in produto.imagem %}
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/calcas/calca_4.png') }}"
-                                class="categoria-img" alt="Calça">
-                        </div>
+                    <div class="col">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/calcas/calca_5.png') }}"
-                                class="categoria-img" alt="Calça">
-                        </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/calcas/calca_6.png') }}"
-                                class="categoria-img" alt="Calça">
-                        </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
+
+                        </a>
 
                     </div>
 
-                </section>
+                    {% endif %}
+
+                {% endfor %}
 
             </div>
 
+        </section>
+
+    </div>
 
 
 
-            <div>
-                <h1 id="camisas" class="titulo-categoria">CAMISAS</h1>
+    <!-- CAMISAS -->
+    <div>
 
-                <section class="container py-5">
+        <h1 id="camisas" class="titulo-categoria">
+            CAMISAS
+        </h1>
 
-                    <div class="row row-cols-2 row-cols-md-3 g-4">
+        <section class="container py-5">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/camisas/camisa_1.png') }}"
-                                class="categoria-img" alt="Camisa">
-                        </div>
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/camisas/camisa_2.png') }}"
-                                class="categoria-img" alt="Camisa">
-                        </div>
+                {% for produto in produtos %}
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/camisas/camisa_3.png') }}"
-                                class="categoria-img" alt="Camisa">
-                        </div>
+                    {% if 'camisas' in produto.imagem %}
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/camisas/camisa_4.png') }}"
-                                class="categoria-img" alt="Camisa">
-                        </div>
+                    <div class="col">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/camisas/camisa_5.png') }}"
-                                class="categoria-img" alt="Camisa">
-                        </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/camisas/camisa_6.png') }}"
-                                class="categoria-img" alt="Camisa">
-                        </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
+
+                        </a>
 
                     </div>
 
-                </section>
+                    {% endif %}
+
+                {% endfor %}
 
             </div>
 
+        </section>
+
+    </div>
 
 
 
-            <div>
-                <h1 id="casacos" class="titulo-categoria">CASACOS</h1>
+    <!-- CASACOS -->
+    <div>
 
-                <section class="container py-5">
+        <h1 id="casacos" class="titulo-categoria">
+            CASACOS
+        </h1>
 
-                    <div class="row row-cols-2 row-cols-md-3 g-4">
+        <section class="container py-5">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/casacos/casaco_1.png') }}"
-                                class="categoria-img" alt="casaco">
-                        </div>
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/casacos/casaco_2.png') }}"
-                                class="categoria-img" alt="casaco">
-                        </div>
+                {% for produto in produtos %}
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/casacos/casaco_3.png') }}"
-                                class="categoria-img" alt="casaco">
-                        </div>
+                    {% if 'casacos' in produto.imagem %}
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/casacos/casaco_4.png') }}"
-                                class="categoria-img" alt="casaco">
-                        </div>
+                    <div class="col">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/casacos/casaco_5.png') }}"
-                                class="categoria-img" alt="casaco">
-                        </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                        <div class="col">
-                            <img src="{{ url_for('static', filename='imagens/casacos/casaco_6.png') }}"
-                                class="categoria-img" alt="casaco">
-                        </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
+
+                        </a>
 
                     </div>
 
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+    </div>
 
 
 
-                    <div>
-                        <h1 id="sapatos" class="titulo-categoria">SAPATOS</h1>
+    <!-- SAPATOS -->
+    <div>
 
-                        <section class="container py-5">
+        <h1 id="sapatos" class="titulo-categoria">
+            SAPATOS
+        </h1>
 
-                            <div class="row row-cols-2 row-cols-md-3 g-4">
+        <section class="container py-5">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/sapatos/sapato_1.png') }}"
-                                        class="categoria-img" alt="sapato">
-                                </div>
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/sapatos/sapato_2.png') }}"
-                                        class="categoria-img" alt="sapato">
-                                </div>
+                {% for produto in produtos %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/sapatos/sapato_3.png') }}"
-                                        class="categoria-img" alt="sapato">
-                                </div>
+                    {% if 'sapatos' in produto.imagem %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/sapatos/sapato_4.png') }}"
-                                        class="categoria-img" alt="sapato">
-                                </div>
+                    <div class="col">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/sapatos/sapato_5.png') }}"
-                                        class="categoria-img" alt="sapato">
-                                </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/sapatos/sapato_6.png') }}"
-                                        class="categoria-img" alt="sapato">
-                                </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
 
-                            </div>
-
-
-
-                        </section>
+                        </a>
 
                     </div>
 
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+    </div>
 
 
 
+    <!-- CHAPÉUS -->
+    <div>
 
-                    <div>
-                        <h1 id="chapeus" class="titulo-categoria">CHAPÉUS</h1>
+        <h1 id="chapeus" class="titulo-categoria">
+            CHAPÉUS
+        </h1>
 
-                        <section class="container py-5">
+        <section class="container py-5">
 
-                            <div class="row row-cols-2 row-cols-md-3 g-4">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/chapeus/chapeu_1.png') }}"
-                                        class="categoria-img" alt="chapeu">
-                                </div>
+                {% for produto in produtos %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/chapeus/chapeu_2.png') }}"
-                                        class="categoria-img" alt="chapeu">
-                                </div>
+                    {% if 'chapeus' in produto.imagem %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/chapeus/chapeu_3.png') }}"
-                                        class="categoria-img" alt="chapeu">
-                                </div>
+                    <div class="col">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/chapeus/chapeu_4.png') }}"
-                                        class="categoria-img" alt="chapeu">
-                                </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/chapeus/chapeu_5.png') }}"
-                                        class="categoria-img" alt="chapeu">
-                                </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/chapeus/chapeu_6.png') }}"
-                                        class="categoria-img" alt="chapeu">
-                                </div>
-
-                            </div>
-
-
-
-                        </section>
+                        </a>
 
                     </div>
 
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+    </div>
 
 
 
+    <!-- PIJAMAS -->
+    <div>
 
+        <h1 id="pijamas" class="titulo-categoria">
+            PIJAMAS
+        </h1>
 
-                    <div>
-                        <h1 id="pijamas" class="titulo-categoria">PIJAMAS</h1>
+        <section class="container py-5">
 
-                        <section class="container py-5">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                            <div class="row row-cols-2 row-cols-md-3 g-4">
+                {% for produto in produtos %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/pijamas/pijama_1.png') }}"
-                                        class="categoria-img" alt="pijama">
-                                </div>
+                    {% if 'pijamas' in produto.imagem %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/pijamas/pijama_2.png') }}"
-                                        class="categoria-img" alt="pijama">
-                                </div>
+                    <div class="col">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/pijamas/pijama_3.png') }}"
-                                        class="categoria-img" alt="pijama">
-                                </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/pijamas/pijama_4.png') }}"
-                                        class="categoria-img" alt="pijama">
-                                </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/pijamas/pijama_5.png') }}"
-                                        class="categoria-img" alt="pijama">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/pijamas/pijama_6.png') }}"
-                                        class="categoria-img" alt="pijama">
-                                </div>
-
-                            </div>
-
-
-
-                        </section>
+                        </a>
 
                     </div>
 
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+    </div>
 
 
 
+    <!-- CINTOS -->
+    <div>
 
+        <h1 id="cintos" class="titulo-categoria">
+            CINTOS
+        </h1>
 
-                    <div>
-                        <h1 id="cintos" class="titulo-categoria">CINTOS</h1>
+        <section class="container py-5">
 
-                        <section class="container py-5">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                            <div class="row row-cols-2 row-cols-md-3 g-4">
+                {% for produto in produtos %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/cintos/cinto_1.png') }}"
-                                        class="categoria-img" alt="cinto">
-                                </div>
+                    {% if 'cintos' in produto.imagem %}
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/cintos/cinto_2.png') }}"
-                                        class="categoria-img" alt="cinto">
-                                </div>
+                    <div class="col">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/cintos/cinto_3.png') }}"
-                                        class="categoria-img" alt="cinto">
-                                </div>
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/cintos/cinto_4.png') }}"
-                                        class="categoria-img" alt="cinto">
-                                </div>
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
 
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/cintos/cinto_5.png') }}"
-                                        class="categoria-img" alt="cinto">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/cintos/cinto_6.png') }}"
-                                        class="categoria-img" alt="cinto">
-                                </div>
-
-                            </div>
-
-
-
-                        </section>
+                        </a>
 
                     </div>
 
+                    {% endif %}
 
+                {% endfor %}
 
-                    
+            </div>
 
-                    <div>
-                        <h1 id="maquiagens" class="titulo-categoria">MAQUIAGENS</h1>
+        </section>
 
-                        <section class="container py-5">
-
-                            <div class="row row-cols-2 row-cols-md-3 g-4">
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/maquiagens/maquiagem_1.png') }}"
-                                        class="categoria-img" alt="maquiagem">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/maquiagens/maquiagem_2.png') }}"
-                                        class="categoria-img" alt="maquiagem">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/maquiagens/maquiagem_3.png') }}"
-                                        class="categoria-img" alt="maquiagem">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/maquiagens/maquiagem_4.png') }}"
-                                        class="categoria-img" alt="maquiagem">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/maquiagens/maquiagem_5.png') }}"
-                                        class="categoria-img" alt="maquiagem">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/maquiagens/maquiagem_6.png') }}"
-                                        class="categoria-img" alt="maquiagem">
-                                </div>
-
-                            </div>
+    </div>
 
 
 
-                        </section>
+    <!-- MAQUIAGENS -->
+    <div>
+
+        <h1 id="maquiagens" class="titulo-categoria">
+            MAQUIAGENS
+        </h1>
+
+        <section class="container py-5">
+
+            <div class="row row-cols-2 row-cols-md-3 g-4">
+
+                {% for produto in produtos %}
+
+                    {% if 'maquiagens' in produto.imagem %}
+
+                    <div class="col">
+
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
+
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
+
+                        </a>
 
                     </div>
 
+                    {% endif %}
 
+                {% endfor %}
 
-                    
+            </div>
 
-                    <div>
-                        <h1 id="joias" class="titulo-categoria">JOIAS</h1>
+        </section>
 
-                        <section class="container py-5">
-
-                            <div class="row row-cols-2 row-cols-md-3 g-4">
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/joias/joia_1.png') }}"
-                                        class="categoria-img" alt="joia">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/joias/joia_2.png') }}"
-                                        class="categoria-img" alt="joia">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/joias/joia_3.png') }}"
-                                        class="categoria-img" alt="joia">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/joias/joia_4.png') }}"
-                                        class="categoria-img" alt="joia">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/joias/joia_5.png') }}"
-                                        class="categoria-img" alt="joia">
-                                </div>
-
-                                <div class="col">
-                                    <img src="{{ url_for('static', filename='imagens/joias/joia_6.png') }}"
-                                        class="categoria-img" alt="joia">
-                                </div>
-
-                            </div>
+    </div>
 
 
 
-                        </section>
+    <!-- JOIAS -->
+    <div>
+
+        <h1 id="joias" class="titulo-categoria">
+            JOIAS
+        </h1>
+
+        <section class="container py-5">
+
+            <div class="row row-cols-2 row-cols-md-3 g-4">
+
+                {% for produto in produtos %}
+
+                    {% if 'joias' in produto.imagem %}
+
+                    <div class="col">
+
+                        <a href="{{ url_for('item', id_produto=produto.id) }}">
+
+                            <img
+                                src="{{ url_for('static', filename=produto.imagem) }}"
+                                class="categoria-img"
+                                alt="{{ produto.nome }}"
+                            >
+
+                        </a>
 
                     </div>
 
+                    {% endif %}
 
+                {% endfor %}
 
+            </div>
 
+        </section>
 
+    </div>
 
-                </section>
+</section>
 
-
-
-                {% endblock %}
+{% endblock %}

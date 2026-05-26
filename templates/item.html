@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block titulo %}/Ítem{% endblock %}
+
+{% block content %}
+
+<section class="produto-section">
+
+    <div class="produto-container">
+
+        <!-- IMAGEM -->
+        <div class="produto-imagem">
+
+            <img
+                src="{{ url_for('static', filename=produto.imagem) }}"
+                alt="{{ produto.nome }}"
+            >
+
+        </div>
+
+        <!-- INFO -->
+        <div class="produto-info">
+
+            <div>
+
+                <h1 class="produto-titulo">
+                    {{ produto.nome }}
+                </h1>
+
+                <h2 class="produto-subtitulo">
+                    {{ produto.descricao }}
+                </h2>
+
+                <p class="produto-preco">
+                    {{ produto.preco }}
+                </p>
+
+            </div>
+
+
+            <!-- OPÇÕES -->
+            <div class="produto-opcoes">
+
+                <div class="opcao-box">
+
+                    <label for="cor">COR:</label>
+
+                    <select id="cor">
+                        <option>Selecionar...</option>
+                        <option>Preto</option>
+                        <option>Marrom</option>
+                        <option>Bege</option>
+                    </select>
+
+                </div>
+
+                <div class="opcao-box">
+
+                    <label for="tamanho">TAMANHO:</label>
+
+                    <select id="tamanho">
+                        <option>Selecionar...</option>
+                        <option>P</option>
+                        <option>M</option>
+                        <option>G</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- REF -->
+            <div class="produto-ref">
+
+                <label for="ref">
+                    SIMULAR REF.:
+                </label>
+
+                <input
+                    type="text"
+                    id="ref"
+                    placeholder="Ex: 00000-000"
+                >
+
+            </div>
+
+
+            <!-- COMPRA -->
+            <div class="produto-compra">
+
+                <div class="quantidade-box">
+
+                    <button>-</button>
+
+                    <span>1</span>
+
+                    <button>+</button>
+
+                </div>
+
+                <button class="btn-comprar">
+                    COMPRAR
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RELACIONADOS -->
+
+<section class="relacionados">
+
+    <h2 class="relacionados-titulo">
+        PRODUTOS RELACIONADOS
+    </h2>
+
+    <div class="relacionados-grid">
+
+        {% for relacionado in produtos %}
+
+            {% if relacionado.id != produto.id %}
+
+            <a
+                href="{{ url_for('item', id_produto=relacionado.id) }}"
+                class="relacionado-item"
+            >
+
+                <img
+                    src="{{ url_for('static', filename=relacionado.imagem) }}"
+                    alt="{{ relacionado.nome }}"
+                >
+
+            </a>
+
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

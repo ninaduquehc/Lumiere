@@ -369,6 +369,687 @@ header {
     transform: scale(1.03);
 }
 
+/* ========================================
+   PÁGINA ITEM
+======================================== */
+
+.produto-section {
+    width: 100%;
+
+    padding: 3rem 2rem;
+}
+
+.produto-container {
+    max-width: 90rem;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2rem;
+
+    background-color: var(--cor-dourado);
+
+    padding: 1.5rem;
+}
+
+
+/* ========================================
+   IMAGEM
+======================================== */
+
+.produto-imagem {
+    width: 100%;
+
+    border: 0.18rem solid #299cff;
+
+    overflow: hidden;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    aspect-ratio: 1 / 1;
+}
+
+
+/* ========================================
+   INFO
+======================================== */
+
+.produto-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    gap: 1.5rem;
+}
+
+.produto-titulo {
+    color: var(--cor-carvao);
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    line-height: 1;
+}
+
+.produto-subtitulo {
+    color: var(--cor-carvao);
+
+    font-size: clamp(1.6rem, 2vw, 2.2rem);
+
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+.produto-preco {
+    color: var(--cor-carvao);
+
+    font-size: 1.1rem;
+
+    font-family: 'Cormorant Garamond', serif;
+}
+
+
+/* ========================================
+   OPÇÕES
+======================================== */
+
+.produto-opcoes {
+    display: flex;
+
+    gap: 1.5rem;
+
+    flex-wrap: wrap;
+}
+
+.opcao-box {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+    flex: 1;
+}
+
+.opcao-box label {
+    font-family: 'Cormorant Garamond', serif;
+
+    color: var(--cor-carvao);
+
+    font-size: 1.1rem;
+}
+
+.opcao-box select {
+    width: 100%;
+
+    padding: 0.8rem 1rem;
+
+    border: none;
+    outline: none;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-creme);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   REF
+======================================== */
+
+.produto-ref {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+.produto-ref label {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.1rem;
+}
+
+.produto-ref input {
+    flex: 1;
+
+    min-width: 14rem;
+
+    padding: 0.8rem 1rem;
+
+    border: none;
+    outline: none;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-creme);
+
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.produto-ref input::placeholder {
+    color: var(--cor-creme);
+}
+
+
+/* ========================================
+   COMPRA
+======================================== */
+
+.produto-compra {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+.quantidade-box {
+    display: flex;
+    align-items: center;
+
+    background-color: var(--cor-marrom-input);
+}
+
+.quantidade-box button {
+    border: none;
+
+    background: transparent;
+
+    color: var(--cor-creme);
+
+    padding: 0.9rem 1rem;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.quantidade-box button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quantidade-box span {
+    color: var(--cor-creme);
+
+    min-width: 2rem;
+
+    text-align: center;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.2rem;
+}
+
+.btn-comprar {
+    border: none;
+
+    padding: 0.9rem 2.5rem;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-creme);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.5rem;
+    letter-spacing: 0.08rem;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-comprar:hover {
+    transform: scale(1.03);
+}
+
+
+/* ========================================
+   RELACIONADOS
+======================================== */
+
+.relacionados {
+    width: 100%;
+
+    padding: 0 2rem 4rem;
+}
+
+.relacionados-titulo {
+    max-width: 90rem;
+
+    margin: 0 auto 2rem;
+
+    color: var(--cor-carvao);
+
+    font-size: 1.5rem;
+}
+
+.relacionados-grid {
+    max-width: 90rem;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 1rem;
+}
+
+.relacionado-item {
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.relacionado-item:hover {
+    transform: scale(1.03);
+}
+
+.relacionado-item img {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+/* ========================================
+   CATÁLOGO
+======================================== */
+
+.catalogo {
+    width: 100%;
+
+    padding: 4rem 2rem;
+}
+
+.catalogo-grid {
+    max-width: 90rem;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1.5rem;
+}
+
+.catalogo-item {
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.catalogo-item:hover {
+    transform: scale(1.03);
+}
+
+.catalogo-img {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+/* ========================================
+   PÁGINA ITEM
+======================================== */
+
+.produto-section {
+    width: 100%;
+
+    padding: 3rem 2rem;
+}
+
+.produto-container {
+    max-width: 90rem;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2rem;
+
+    background-color: var(--cor-dourado);
+
+    padding: 1.5rem;
+}
+
+
+/* ========================================
+   IMAGEM
+======================================== */
+
+.produto-imagem {
+    width: 100%;
+
+    border: 0.18rem solid #299cff;
+
+    overflow: hidden;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    aspect-ratio: 1 / 1;
+}
+
+
+/* ========================================
+   INFO
+======================================== */
+
+.produto-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    gap: 1.5rem;
+}
+
+.produto-titulo {
+    color: var(--cor-carvao);
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    line-height: 1;
+}
+
+.produto-subtitulo {
+    color: var(--cor-carvao);
+
+    font-size: clamp(1.6rem, 2vw, 2.2rem);
+
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+.produto-preco {
+    margin-top: 1rem;
+
+    color: var(--cor-carvao);
+
+    font-size: 1.1rem;
+
+    font-family: 'Cormorant Garamond', serif;
+}
+
+
+/* ========================================
+   OPÇÕES
+======================================== */
+
+.produto-opcoes {
+    display: flex;
+
+    gap: 1.5rem;
+
+    flex-wrap: wrap;
+}
+
+.opcao-box {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+    flex: 1;
+}
+
+.opcao-box label {
+    font-family: 'Cormorant Garamond', serif;
+
+    color: var(--cor-carvao);
+
+    font-size: 1.1rem;
+}
+
+.opcao-box select {
+    width: 100%;
+
+    padding: 0.8rem 1rem;
+
+    border: none;
+    outline: none;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-creme);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   REF
+======================================== */
+
+.produto-ref {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+.produto-ref label {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.1rem;
+}
+
+.produto-ref input {
+    flex: 1;
+
+    min-width: 14rem;
+
+    padding: 0.8rem 1rem;
+
+    border: none;
+    outline: none;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-creme);
+
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.produto-ref input::placeholder {
+    color: var(--cor-creme);
+}
+
+
+/* ========================================
+   COMPRA
+======================================== */
+
+.produto-compra {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+.quantidade-box {
+    display: flex;
+    align-items: center;
+
+    background-color: var(--cor-marrom-input);
+}
+
+.quantidade-box button {
+    border: none;
+
+    background: transparent;
+
+    color: var(--cor-creme);
+
+    padding: 0.9rem 1rem;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.quantidade-box span {
+    color: var(--cor-creme);
+
+    min-width: 2rem;
+
+    text-align: center;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.2rem;
+}
+
+.btn-comprar {
+    border: none;
+
+    padding: 0.9rem 2.5rem;
+
+    background-color: var(--cor-marrom-input);
+
+    color: var(--cor-creme);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-comprar:hover {
+    transform: scale(1.03);
+}
+
+
+/* ========================================
+   RELACIONADOS
+======================================== */
+
+.relacionados {
+    width: 100%;
+
+    padding: 0 2rem 4rem;
+}
+
+.relacionados-titulo {
+    max-width: 90rem;
+
+    margin: 0 auto 2rem;
+
+    color: var(--cor-carvao);
+}
+
+.relacionados-grid {
+    max-width: 90rem;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 1rem;
+}
+
+.relacionado-item {
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.relacionado-item:hover {
+    transform: scale(1.03);
+}
+
+.relacionado-item img {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+
+/* ========================================
+   RESPONSIVO
+======================================== */
+
+@media (max-width: 62rem) {
+
+    .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .produto-container {
+        grid-template-columns: 1fr;
+    }
+
+    .relacionados-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ========================================
+   RESPONSIVO
+======================================== */
+
+@media (max-width: 62rem) {
+
+    .produto-container {
+        grid-template-columns: 1fr;
+    }
+
+    .produto-compra {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-comprar {
+        width: 100%;
+    }
+
+    .relacionados-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
 
 /* ========================================
    FOOTER
