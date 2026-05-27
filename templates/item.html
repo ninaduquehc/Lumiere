@@ -124,8 +124,6 @@
 
         {% for relacionado in produtos %}
 
-            {% if relacionado.id != produto.id %}
-
             <a
                 href="{{ url_for('item', id_produto=relacionado.id) }}"
                 class="relacionado-item"
@@ -138,7 +136,6 @@
 
             </a>
 
-            {% endif %}
 
         {% endfor %}
 

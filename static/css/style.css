@@ -369,6 +369,7 @@ header {
     transform: scale(1.03);
 }
 
+
 /* ========================================
    PÁGINA ITEM
 ======================================== */
@@ -380,7 +381,7 @@ header {
 }
 
 .produto-container {
-    max-width: 90rem;
+    max-width: 68rem;
 
     margin: 0 auto;
 
@@ -391,16 +392,22 @@ header {
 
     background-color: var(--cor-dourado);
 
-    padding: 1.5rem;
+    padding: 1rem;
 }
 
 
 /* ========================================
-   IMAGEM
+   IMAGEM ITEM
 ======================================== */
 
 .produto-imagem {
     width: 100%;
+
+    max-width: 32rem;
+
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto;
 
     border: 0.18rem solid #299cff;
 
@@ -412,13 +419,11 @@ header {
     height: 100%;
 
     object-fit: cover;
-
-    aspect-ratio: 1 / 1;
 }
 
 
 /* ========================================
-   INFO
+   INFO ITEM
 ======================================== */
 
 .produto-info {
@@ -426,13 +431,13 @@ header {
     flex-direction: column;
     justify-content: space-between;
 
-    gap: 1.5rem;
+    gap: 0.8rem;
 }
 
 .produto-titulo {
     color: var(--cor-carvao);
 
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
 
     line-height: 1;
 }
@@ -440,7 +445,7 @@ header {
 .produto-subtitulo {
     color: var(--cor-carvao);
 
-    font-size: clamp(1.6rem, 2vw, 2.2rem);
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
 
     font-weight: 500;
 
@@ -448,9 +453,11 @@ header {
 }
 
 .produto-preco {
+    margin-top: 1rem;
+
     color: var(--cor-carvao);
 
-    font-size: 1.1rem;
+    font-size: 1rem;
 
     font-family: 'Cormorant Garamond', serif;
 }
@@ -669,6 +676,7 @@ header {
     object-fit: cover;
 }
 
+
 /* ========================================
    CATÁLOGO
 ======================================== */
@@ -708,328 +716,42 @@ header {
     object-fit: cover;
 }
 
-/* ========================================
-   PÁGINA ITEM
-======================================== */
-
-.produto-section {
-    width: 100%;
-
-    padding: 3rem 2rem;
-}
-
-.produto-container {
-    max-width: 90rem;
-
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 2rem;
-
-    background-color: var(--cor-dourado);
-
-    padding: 1.5rem;
-}
-
-
-/* ========================================
-   IMAGEM
-======================================== */
-
-.produto-imagem {
-    width: 100%;
-
-    border: 0.18rem solid #299cff;
-
-    overflow: hidden;
-}
-
-.produto-imagem img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    aspect-ratio: 1 / 1;
-}
-
-
-/* ========================================
-   INFO
-======================================== */
-
-.produto-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    gap: 1.5rem;
-}
-
-.produto-titulo {
-    color: var(--cor-carvao);
-
-    font-size: clamp(2rem, 4vw, 3rem);
-
-    line-height: 1;
-}
-
-.produto-subtitulo {
-    color: var(--cor-carvao);
-
-    font-size: clamp(1.6rem, 2vw, 2.2rem);
-
-    font-weight: 500;
-
-    line-height: 1.2;
-}
-
-.produto-preco {
-    margin-top: 1rem;
-
-    color: var(--cor-carvao);
-
-    font-size: 1.1rem;
-
-    font-family: 'Cormorant Garamond', serif;
-}
-
-
-/* ========================================
-   OPÇÕES
-======================================== */
-
-.produto-opcoes {
-    display: flex;
-
-    gap: 1.5rem;
-
-    flex-wrap: wrap;
-}
-
-.opcao-box {
-    display: flex;
-    flex-direction: column;
-
-    gap: 0.5rem;
-
-    flex: 1;
-}
-
-.opcao-box label {
-    font-family: 'Cormorant Garamond', serif;
-
-    color: var(--cor-carvao);
-
-    font-size: 1.1rem;
-}
-
-.opcao-box select {
-    width: 100%;
-
-    padding: 0.8rem 1rem;
-
-    border: none;
-    outline: none;
-
-    background-color: var(--cor-marrom-input);
-
-    color: var(--cor-creme);
-
-    font-family: 'Cormorant Garamond', serif;
-
-    cursor: pointer;
-}
-
-
-/* ========================================
-   REF
-======================================== */
-
-.produto-ref {
-    display: flex;
-    align-items: center;
-
-    gap: 1rem;
-
-    flex-wrap: wrap;
-}
-
-.produto-ref label {
-    font-family: 'Cormorant Garamond', serif;
-
-    font-size: 1.1rem;
-}
-
-.produto-ref input {
-    flex: 1;
-
-    min-width: 14rem;
-
-    padding: 0.8rem 1rem;
-
-    border: none;
-    outline: none;
-
-    background-color: var(--cor-marrom-input);
-
-    color: var(--cor-creme);
-
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.produto-ref input::placeholder {
-    color: var(--cor-creme);
-}
-
-
-/* ========================================
-   COMPRA
-======================================== */
-
-.produto-compra {
-    display: flex;
-    align-items: center;
-
-    gap: 1rem;
-
-    flex-wrap: wrap;
-}
-
-.quantidade-box {
-    display: flex;
-    align-items: center;
-
-    background-color: var(--cor-marrom-input);
-}
-
-.quantidade-box button {
-    border: none;
-
-    background: transparent;
-
-    color: var(--cor-creme);
-
-    padding: 0.9rem 1rem;
-
-    font-size: 1.2rem;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.quantidade-box span {
-    color: var(--cor-creme);
-
-    min-width: 2rem;
-
-    text-align: center;
-
-    font-family: 'Cormorant Garamond', serif;
-
-    font-size: 1.2rem;
-}
-
-.btn-comprar {
-    border: none;
-
-    padding: 0.9rem 2.5rem;
-
-    background-color: var(--cor-marrom-input);
-
-    color: var(--cor-creme);
-
-    font-family: 'Cormorant Garamond', serif;
-
-    font-size: 1.5rem;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.btn-comprar:hover {
-    transform: scale(1.03);
-}
-
-
-/* ========================================
-   RELACIONADOS
-======================================== */
-
-.relacionados {
-    width: 100%;
-
-    padding: 0 2rem 4rem;
-}
-
-.relacionados-titulo {
-    max-width: 90rem;
-
-    margin: 0 auto 2rem;
-
-    color: var(--cor-carvao);
-}
-
-.relacionados-grid {
-    max-width: 90rem;
-
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-
-    gap: 1rem;
-}
-
-.relacionado-item {
-    overflow: hidden;
-
-    transition: 0.3s;
-}
-
-.relacionado-item:hover {
-    transform: scale(1.03);
-}
-
-.relacionado-item img {
-    width: 100%;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-}
-
 
 /* ========================================
    RESPONSIVO
 ======================================== */
 
 @media (max-width: 62rem) {
+
+    .search-bar {
+        width: 100%;
+
+        margin: 0.6rem 0;
+    }
+
+    .banner-img {
+        height: 60vh;
+    }
+
+    .titulo-categoria {
+        letter-spacing: 0.2rem;
+    }
+
+    .login-box {
+        flex-direction: column;
+    }
+
+    .login-form-area {
+        width: 100%;
+    }
+
+    .login-form input {
+        width: 100%;
+    }
 
     .catalogo-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .produto-container {
-        grid-template-columns: 1fr;
-    }
-
-    .relacionados-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-
-/* ========================================
-   RESPONSIVO
-======================================== */
-
-@media (max-width: 62rem) {
 
     .produto-container {
         grid-template-columns: 1fr;
@@ -1048,6 +770,17 @@ header {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .social-container {
+        gap: 2rem;
+    }
+
+    .social-item {
+        font-size: 1rem;
+    }
+
+    .social-item i {
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -1090,51 +823,4 @@ header {
     color: var(--cor-branco);
 
     transform: scale(1.05);
-}
-
-
-/* ========================================
-   RESPONSIVO
-======================================== */
-
-@media (max-width: 62rem) {
-
-    .search-bar {
-        width: 100%;
-
-        margin: 0.6rem 0;
-    }
-
-    .banner-img {
-        height: 60vh;
-    }
-
-    .titulo-categoria {
-        letter-spacing: 0.2rem;
-    }
-
-    .login-box {
-        flex-direction: column;
-    }
-
-    .login-form-area {
-        width: 100%;
-    }
-
-    .login-form input {
-        width: 100%;
-    }
-
-    .social-container {
-        gap: 2rem;
-    }
-
-    .social-item {
-        font-size: 1rem;
-    }
-
-    .social-item i {
-        font-size: 1.5rem;
-    }
-
 }

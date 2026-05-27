@@ -8,10 +8,13 @@ app = Flask(__name__)
 # MYSQL
 # ========================================
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'fatec'
-app.config['MYSQL_DB'] = 'lumiere'
+app.config["MYSQL_HOST"] = "3.228.218.191"
+
+app.config["MYSQL_USER"] = "lumiere_user"
+
+app.config["MYSQL_PASSWORD"] = "fatec"
+
+app.config["MYSQL_DB"] = "lumiere"
 
 mysql = MySQL(app)
 
@@ -51,6 +54,8 @@ def catalogo():
             "imagem": produto[4]
         })
 
+    cursor.close()
+
     return render_template(
         "catalogo.html",
         produtos=produtos
@@ -66,6 +71,7 @@ def item(id_produto):
 
     cursor = mysql.connection.cursor()
 
+    # PRODUTO PRINCIPAL
     cursor.execute(
         "SELECT * FROM produtos WHERE id = %s",
         [id_produto]
@@ -78,12 +84,42 @@ def item(id_produto):
         "nome": dado[1],
         "descricao": dado[2],
         "preco": dado[3],
-        "imagem": dado[4]
+        "imagem": dado[4],
+        "categoria": dado[5]
     }
+
+    # PRODUTOS RELACIONADOS
+    cursor.execute(
+    """
+    SELECT * FROM produtos
+    WHERE categoria = %s
+    AND id != %s
+    ORDER BY RAND()
+    LIMIT 5
+    """,
+    [produto["categoria"], id_produto]
+)
+
+    dados_relacionados = cursor.fetchall()
+
+    produtos = []
+
+    for relacionado in dados_relacionados:
+
+        produtos.append({
+            "id": relacionado[0],
+            "nome": relacionado[1],
+            "descricao": relacionado[2],
+            "preco": relacionado[3],
+            "imagem": relacionado[4]
+        })
+
+    cursor.close()
 
     return render_template(
         "item.html",
-        produto=produto
+        produto=produto,
+        produtos=produtos
     )
 
 
