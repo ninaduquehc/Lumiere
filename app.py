@@ -8,7 +8,7 @@ app = Flask(__name__)
 # MYSQL
 # ========================================
 
-app.config["MYSQL_HOST"] = "3.235.163.215"
+app.config["MYSQL_HOST"] = "52.1.27.18"
 
 app.config["MYSQL_USER"] = "lumiere_user"
 
