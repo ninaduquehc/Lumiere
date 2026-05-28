@@ -8,13 +8,19 @@ app = Flask(__name__)
 # MYSQL
 # ========================================
 
-app.config["MYSQL_HOST"] = "52.1.27.18"
+from flask import Flask, render_template
+from flask_mysqldb import MySQL
+from dotenv import load_dotenv
+import os
 
-app.config["MYSQL_USER"] = "lumiere_user"
+load_dotenv()
 
-app.config["MYSQL_PASSWORD"] = "fatec"
+app = Flask(__name__)
 
-app.config["MYSQL_DB"] = "lumiere"
+app.config["MYSQL_HOST"] = os.getenv("MYSQL_HOST")
+app.config["MYSQL_USER"] = os.getenv("MYSQL_USER")
+app.config["MYSQL_PASSWORD"] = os.getenv("MYSQL_PASSWORD")
+app.config["MYSQL_DB"] = os.getenv("MYSQL_DB")
 
 mysql = MySQL(app)
 
