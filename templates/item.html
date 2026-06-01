@@ -11,10 +11,7 @@
         <!-- IMAGEM -->
         <div class="produto-imagem">
 
-            <img
-                src="{{ url_for('static', filename=produto.imagem) }}"
-                alt="{{ produto.nome }}"
-            >
+            <img src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
 
         </div>
 
@@ -77,11 +74,7 @@
                     SIMULAR REF.:
                 </label>
 
-                <input
-                    type="text"
-                    id="ref"
-                    placeholder="Ex: 00000-000"
-                >
+                <input type="text" id="ref" placeholder="Ex: 00000-000">
 
             </div>
 
@@ -91,19 +84,36 @@
 
                 <div class="quantidade-box">
 
-                    <button>-</button>
+                    <button type="button">-</button>
 
                     <span>1</span>
 
-                    <button>+</button>
+                    <button type="button">+</button>
 
                 </div>
 
                 <button class="btn-comprar">
+
                     COMPRAR
+
                 </button>
 
             </div>
+
+            <br>
+
+            <!-- CARRINHO -->
+            <form action="{{ url_for('adicionar_carrinho', id_produto=produto.id) }}" method="POST">
+
+                <button type="submit" class="btn btn-dark">
+
+                    <i class="bi bi-cart-plus"></i>
+
+                    Adicionar ao carrinho
+
+                </button>
+
+            </form>
 
         </div>
 
@@ -124,17 +134,11 @@
 
         {% for relacionado in produtos %}
 
-            <a
-                href="{{ url_for('item', id_produto=relacionado.id) }}"
-                class="relacionado-item"
-            >
+        <a href="{{ url_for('item', id_produto=relacionado.id) }}" class="relacionado-item">
 
-                <img
-                    src="{{ url_for('static', filename=relacionado.imagem) }}"
-                    alt="{{ relacionado.nome }}"
-                >
+            <img src="{{ url_for('static', filename=relacionado.imagem) }}" alt="{{ relacionado.nome }}">
 
-            </a>
+        </a>
 
 
         {% endfor %}

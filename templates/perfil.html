@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block titulo %}/Perfil{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <h1>Meu Perfil</h1>
+
+    <h3>
+        Bem-vinda, {{ usuario.nome }}
+    </h3>
+
+    <br>
+
+    <a
+        href="{{ url_for('logout') }}"
+        class="btn btn-dark">
+
+        Sair
+
+    </a>
+
+</section>
+
+{% endblock %}
