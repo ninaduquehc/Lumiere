@@ -4,87 +4,67 @@
 
 {% block content %}
 
-<section class="container py-5">
+<section class="container carrinho-section">
 
-    <h1>Meu Carrinho</h1>
-
-    <hr>
+    <h1 class="mb-4">Meu Carrinho</h1>
 
     {% if produtos %}
 
     {% for produto in produtos %}
 
-    <div class="row mb-4 align-items-center">
+    <div class="row align-items-center carrinho-item">
 
+        <!-- IMAGEM -->
         <div class="col-2">
-
-            <img src="{{ url_for('static', filename=produto.imagem) }}" class="img-fluid">
-
+            <img src="{{ url_for('static', filename=produto.imagem) }}" class="rounded">
         </div>
 
+        <!-- INFO -->
         <div class="col">
 
-            <h4>{{ produto.nome }}</h4>
+            <h4>{{ produto.descricao }}</h4>
 
-            <div>
+            <!-- QUANTIDADE -->
+            <div class="carrinho-quantidade mb-2">
 
-                <a href="{{ url_for('diminuir', id_item=produto.id) }}" class="btn btn-sm btn-outline-dark">
+                <a href="{{ url_for('diminuir', id_item=produto.id) }}" class="btn btn-sm btn-outline-dark">-</a>
 
-                    -
+                <span class="fw-bold">{{ produto.quantidade }}</span>
 
-                </a>
-
-                <span class="mx-2">
-
-                    {{ produto.quantidade }}
-
-                </span>
-
-                <a href="{{ url_for('aumentar', id_item=produto.id) }}" class="btn btn-sm btn-outline-dark">
-
-                    +
-
-                </a>
+                <a href="{{ url_for('aumentar', id_item=produto.id) }}" class="btn btn-sm btn-outline-dark">+</a>
 
             </div>
 
-            <p>
-                R$ {{ produto.preco }}
-            </p>
+            <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
 
-            <p>
-                Subtotal:
-                R$ {{ produto.subtotal }}
-            </p>
+            <p><strong>Subtotal:</strong> R$ {{ produto.subtotal }}</p>
 
-            <a href="{{ url_for('remover_carrinho', id_item=produto.id) }}" class="btn btn-outline-danger">
-
+            <a href="{{ url_for('remover_carrinho', id_item=produto.id) }}" class="btn btn-outline-danger btn-sm">
                 Remover
-
             </a>
 
         </div>
 
     </div>
 
-    <hr>
-
     {% endfor %}
 
-    <h3>
+    <!-- TOTAL -->
+    <div class="carrinho-total">
 
-        Total:
-        R$ {{ total }}
+        <h3>Total: R$ {{ total }}</h3>
 
-    </h3>
+        <form action="{{ url_for('finalizar_compra') }}" method="POST">
+            <button type="submit" class="btn btn-dark">
+                Finalizar compra
+            </button>
+        </form>
+
+    </div>
 
     {% else %}
 
-    <h4>
-
-        Seu carrinho está vazio
-
-    </h4>
+    <h4>Seu carrinho está vazio</h4>
 
     {% endif %}
 

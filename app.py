@@ -1,36 +1,20 @@
-from werkzeug.security import (
-    generate_password_hash,
-    check_password_hash
-)
-
-from flask import (
-    Flask,
-    render_template,
-    request,
-    redirect,
-    url_for,
-    session
-)
-
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 from dotenv import load_dotenv
 import os
 
-
-# CARREGAR .env
-load_dotenv(
-    dotenv_path=os.path.join(
-        os.path.dirname(__file__),
-        ".env"
-    )
-)
+# =========================
+# ENV
+# =========================
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
 
 app = Flask(__name__)
-
 app.secret_key = "lumiere_secret"
 
-
+# =========================
 # MYSQL CONFIG
+# =========================
 app.config["MYSQL_HOST"] = os.getenv("MYSQL_HOST")
 app.config["MYSQL_USER"] = os.getenv("MYSQL_USER")
 app.config["MYSQL_PASSWORD"] = os.getenv("MYSQL_PASSWORD")
@@ -48,57 +32,82 @@ def home():
 
 
 # =========================
-# CATÁLOGO (COM BUSCA)
+# CATÁLOGO (COM CATEGORIAS)
 # =========================
 @app.route("/catalogo")
 def catalogo():
 
     busca = request.args.get("busca")
+    categoria = request.args.get("categoria")
 
-    cursor = mysql.connection.cursor()
+    min_preco = request.args.get("min")
+    max_preco = request.args.get("max")
+
+    filtrado = bool(busca or categoria or min_preco or max_preco)
+
+    query = "SELECT * FROM produtos WHERE 1=1"
+    params = []
 
     if busca:
+        query += " AND nome LIKE %s"
+        params.append(f"%{busca}%")
 
-        cursor.execute("""
+    if categoria:
+        query += " AND categoria = %s"
+        params.append(categoria)
 
-            SELECT *
-            FROM produtos
-            WHERE nome LIKE %s
-            OR categoria LIKE %s
+    if min_preco:
+        query += " AND preco >= %s"
+        params.append(min_preco)
 
-        """, (
-            f"%{busca}%",
-            f"%{busca}%"
-        ))
+    if max_preco:
+        query += " AND preco <= %s"
+        params.append(max_preco)
 
-    else:
-
-        cursor.execute("""
-            SELECT *
-            FROM produtos
-        """)
-
+    cursor = mysql.connection.cursor()
+    cursor.execute(query, params)
     dados = cursor.fetchall()
-
-    produtos = []
-
-    for produto in dados:
-
-        produtos.append({
-            "id": produto[0],
-            "nome": produto[1],
-            "descricao": produto[2],
-            "preco": produto[3],
-            "imagem": produto[4],
-            "categoria": produto[5]
-        })
-
     cursor.close()
+
+    produtos = [
+        {
+            "id": p[0],
+            "nome": p[1],
+            "descricao": p[2],
+            "preco": p[3],
+            "imagem": p[4],
+            "categoria": p[5]
+        }
+        for p in dados
+    ]
+
+    # 🔥 ORGANIZAÇÃO POR CATEGORIA (IMPORTANTE PRO SEU HTML)
+    categorias = {
+        "bolsas": [],
+        "calcas": [],
+        "camisas": [],
+        "casacos": [],
+        "sapatos": [],
+        "chapeus": [],
+        "pijamas": [],
+        "cintos": [],
+        "maquiagens": [],
+        "joias": []
+    }
+
+    for p in produtos:
+        cat = p["categoria"]
+        if cat in categorias:
+            categorias[cat].append(p)
 
     return render_template(
         "catalogo.html",
-        produtos=produtos,
-        busca=busca
+        categorias=categorias,
+        busca=busca,
+        categoria=categoria,
+        min=min_preco,
+        max=max_preco,
+        filtrado=filtrado
     )
 
 
@@ -110,11 +119,7 @@ def item(id_produto):
 
     cursor = mysql.connection.cursor()
 
-    cursor.execute(
-        "SELECT * FROM produtos WHERE id = %s",
-        [id_produto]
-    )
-
+    cursor.execute("SELECT * FROM produtos WHERE id = %s", [id_produto])
     dado = cursor.fetchone()
 
     produto = {
@@ -129,32 +134,29 @@ def item(id_produto):
     cursor.execute("""
         SELECT *
         FROM produtos
-        WHERE categoria = %s
-        AND id != %s
+        WHERE categoria = %s AND id != %s
         ORDER BY RAND()
         LIMIT 5
     """, [produto["categoria"], id_produto])
 
-    dados_relacionados = cursor.fetchall()
-
-    produtos = []
-
-    for relacionado in dados_relacionados:
-
-        produtos.append({
-            "id": relacionado[0],
-            "nome": relacionado[1],
-            "descricao": relacionado[2],
-            "preco": relacionado[3],
-            "imagem": relacionado[4]
-        })
-
+    relacionados = cursor.fetchall()
     cursor.close()
+
+    produtos_relacionados = [
+        {
+            "id": r[0],
+            "nome": r[1],
+            "descricao": r[2],
+            "preco": r[3],
+            "imagem": r[4]
+        }
+        for r in relacionados
+    ]
 
     return render_template(
         "item.html",
         produto=produto,
-        produtos=produtos
+        produtos=produtos_relacionados
     )
 
 
@@ -168,21 +170,16 @@ def cadastro():
 
         nome = request.form["nome"]
         email = request.form["email"]
-
-        senha = generate_password_hash(
-            request.form["senha"]
-        )
+        senha = generate_password_hash(request.form["senha"])
 
         cursor = mysql.connection.cursor()
 
         cursor.execute("""
-            INSERT INTO usuarios
-            (nome, email, senha)
+            INSERT INTO usuarios (nome, email, senha)
             VALUES (%s,%s,%s)
         """, (nome, email, senha))
 
         mysql.connection.commit()
-
         cursor.close()
 
         return redirect(url_for("login"))
@@ -203,29 +200,16 @@ def login():
 
         cursor = mysql.connection.cursor()
 
-        cursor.execute("""
-            SELECT *
-            FROM usuarios
-            WHERE email = %s
-        """, [email])
-
+        cursor.execute("SELECT * FROM usuarios WHERE email = %s", [email])
         usuario = cursor.fetchone()
-
         cursor.close()
 
-        if usuario:
+        if usuario and check_password_hash(usuario[3], senha):
 
-            senha_correta = check_password_hash(
-                usuario[3],
-                senha
-            )
+            session["usuario_id"] = usuario[0]
+            session["nome"] = usuario[1]
 
-            if senha_correta:
-
-                session["usuario_id"] = usuario[0]
-                session["nome"] = usuario[1]
-
-                return redirect(url_for("perfil"))
+            return redirect(url_for("perfil"))
 
     return render_template("login.html")
 
@@ -237,17 +221,9 @@ def login():
 def perfil():
 
     if "usuario_id" not in session:
-
         return redirect(url_for("login"))
 
-    usuario = {
-        "nome": session["nome"]
-    }
-
-    return render_template(
-        "perfil.html",
-        usuario=usuario
-    )
+    return render_template("perfil.html", usuario={"nome": session["nome"]})
 
 
 # =========================
@@ -255,94 +231,8 @@ def perfil():
 # =========================
 @app.route("/logout")
 def logout():
-
     session.clear()
-
     return redirect(url_for("login"))
-
-
-# =========================
-# CARRINHO - ADICIONAR
-# =========================
-@app.route("/adicionar-carrinho/<int:id_produto>", methods=["POST"])
-def adicionar_carrinho(id_produto):
-
-    if "usuario_id" not in session:
-        return redirect(url_for("login"))
-
-    usuario_id = session["usuario_id"]
-
-    cursor = mysql.connection.cursor()
-
-    cursor.execute("""
-        SELECT id, quantidade
-        FROM carrinho
-        WHERE usuario_id = %s
-        AND produto_id = %s
-    """, (usuario_id, id_produto))
-
-    item = cursor.fetchone()
-
-    if item:
-
-        cursor.execute("""
-            UPDATE carrinho
-            SET quantidade = quantidade + 1
-            WHERE id = %s
-        """, (item[0],))
-
-    else:
-
-        cursor.execute("""
-            INSERT INTO carrinho
-            (usuario_id, produto_id, quantidade)
-            VALUES (%s,%s,1)
-        """, (usuario_id, id_produto))
-
-    mysql.connection.commit()
-    cursor.close()
-
-    return redirect(url_for("carrinho"))
-
-
-# =========================
-# AUMENTAR
-# =========================
-@app.route("/aumentar/<int:id_item>")
-def aumentar(id_item):
-
-    cursor = mysql.connection.cursor()
-
-    cursor.execute("""
-        UPDATE carrinho
-        SET quantidade = quantidade + 1
-        WHERE id=%s
-    """, [id_item])
-
-    mysql.connection.commit()
-    cursor.close()
-
-    return redirect(url_for("carrinho"))
-
-
-# =========================
-# DIMINUIR
-# =========================
-@app.route("/diminuir/<int:id_item>")
-def diminuir(id_item):
-
-    cursor = mysql.connection.cursor()
-
-    cursor.execute("""
-        UPDATE carrinho
-        SET quantidade = GREATEST(1, quantidade-1)
-        WHERE id=%s
-    """, [id_item])
-
-    mysql.connection.commit()
-    cursor.close()
-
-    return redirect(url_for("carrinho"))
 
 
 # =========================
@@ -359,50 +249,132 @@ def carrinho():
     cursor = mysql.connection.cursor()
 
     cursor.execute("""
-        SELECT
-            carrinho.id,
-            produtos.nome,
-            produtos.preco,
-            produtos.imagem,
-            carrinho.quantidade
-
+        SELECT carrinho.id, produtos.descricao, produtos.preco,
+               produtos.imagem, carrinho.quantidade
         FROM carrinho
-        JOIN produtos
-        ON carrinho.produto_id = produtos.id
-
+        JOIN produtos ON carrinho.produto_id = produtos.id
         WHERE carrinho.usuario_id = %s
     """, [usuario_id])
 
     dados = cursor.fetchall()
+    cursor.close()
 
     produtos = []
     total = 0
 
     for item in dados:
-
         subtotal = float(item[2]) * item[4]
         total += subtotal
 
         produtos.append({
-            "id": item[0],
-            "nome": item[1],
-            "preco": item[2],
-            "imagem": item[3],
-            "quantidade": item[4],
-            "subtotal": subtotal
+        "id": item[0],
+        "descricao": item[1],
+        "preco": item[2],
+        "imagem": item[3],
+        "quantidade": item[4],
+        "subtotal": subtotal
         })
 
-    cursor.close()
-
-    return render_template(
-        "carrinho.html",
-        produtos=produtos,
-        total=total
-    )
+    return render_template("carrinho.html", produtos=produtos, total=total)
 
 
 # =========================
-# REMOVER DO CARRINHO
+# ADICIONAR CARRINHO
+# =========================
+@app.route("/adicionar-carrinho/<int:id_produto>", methods=["POST"])
+def adicionar_carrinho(id_produto):
+
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    usuario_id = session["usuario_id"]
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT id, quantidade
+        FROM carrinho
+        WHERE usuario_id = %s AND produto_id = %s
+    """, (usuario_id, id_produto))
+
+    item = cursor.fetchone()
+
+    if item:
+        cursor.execute("""
+            UPDATE carrinho
+            SET quantidade = quantidade + 1
+            WHERE id = %s
+        """, (item[0],))
+    else:
+        cursor.execute("""
+            INSERT INTO carrinho (usuario_id, produto_id, quantidade)
+            VALUES (%s,%s,1)
+        """, (usuario_id, id_produto))
+
+    mysql.connection.commit()
+    cursor.close()
+
+    return redirect(url_for("carrinho"))
+
+
+# =========================
+# DIMINUIR
+# =========================
+@app.route("/diminuir/<int:id_item>")
+def diminuir(id_item):
+
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT quantidade FROM carrinho WHERE id = %s
+    """, [id_item])
+
+    item = cursor.fetchone()
+
+    if item:
+        if item[0] > 1:
+            cursor.execute("""
+                UPDATE carrinho
+                SET quantidade = quantidade - 1
+                WHERE id = %s
+            """, [id_item])
+        else:
+            cursor.execute("""
+                DELETE FROM carrinho WHERE id = %s
+            """, [id_item])
+
+        mysql.connection.commit()
+
+    cursor.close()
+    return redirect(url_for("carrinho"))
+
+
+# =========================
+# AUMENTAR
+# =========================
+@app.route("/aumentar/<int:id_item>")
+def aumentar(id_item):
+
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        UPDATE carrinho
+        SET quantidade = quantidade + 1
+        WHERE id = %s
+    """, [id_item])
+
+    mysql.connection.commit()
+    cursor.close()
+
+    return redirect(url_for("carrinho"))
+
+# =========================
+# REMOVER CARRINHO 
 # =========================
 @app.route("/remover-carrinho/<int:id_item>")
 def remover_carrinho(id_item):
@@ -422,6 +394,93 @@ def remover_carrinho(id_item):
 
     return redirect(url_for("carrinho"))
 
+# =========================
+# FINALIZAR COMPRA
+# =========================
+@app.route("/finalizar-compra", methods=["POST"])
+def finalizar_compra():
+
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    usuario_id = session["usuario_id"]
+    cursor = mysql.connection.cursor()
+
+    # 1. buscar itens do carrinho
+    cursor.execute("""
+        SELECT produtos.id, carrinho.quantidade, produtos.preco
+        FROM carrinho
+        JOIN produtos ON carrinho.produto_id = produtos.id
+        WHERE carrinho.usuario_id = %s
+    """, [usuario_id])
+
+    itens = cursor.fetchall()
+
+    # se carrinho vazio
+    if not itens:
+        cursor.close()
+        return redirect(url_for("carrinho"))
+
+    # 2. calcular total
+    total = sum(quantidade * float(preco) for _, quantidade, preco in itens)
+
+    # 3. criar pedido
+    cursor.execute("""
+        INSERT INTO pedidos (usuario_id, total)
+        VALUES (%s, %s)
+    """, (usuario_id, total))
+
+    pedido_id = cursor.lastrowid
+
+    # 4. inserir itens do pedido
+    for produto_id, quantidade, preco in itens:
+        cursor.execute("""
+            INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preco)
+            VALUES (%s, %s, %s, %s)
+        """, (pedido_id, produto_id, quantidade, preco))
+
+    # 5. limpar carrinho
+    cursor.execute("""
+        DELETE FROM carrinho
+        WHERE usuario_id = %s
+    """, [usuario_id])
+
+    mysql.connection.commit()
+    cursor.close()
+
+    return redirect(url_for("meus_pedidos"))
+
+# =========================
+# MEUS PEDIDOS
+# =========================
+@app.route("/meus-pedidos")
+def meus_pedidos():
+
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT id, total, data_pedido
+        FROM pedidos
+        WHERE usuario_id = %s
+        ORDER BY id DESC
+    """, (session["usuario_id"],))
+
+    dados = cursor.fetchall()
+    cursor.close()
+
+    pedidos = [
+        {
+            "id": p[0],
+            "total": p[1],
+            "data": p[2]
+        }
+        for p in dados
+    ]
+
+    return render_template("meus_pedidos.html", pedidos=pedidos)
 
 # =========================
 # RUN

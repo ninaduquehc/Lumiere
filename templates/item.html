@@ -20,95 +20,44 @@
 
             <div>
 
-                <h1 class="produto-titulo">
-                    {{ produto.nome }}
+                <h1 class="produto-subtitulo">
+                    {{ produto.descricao }}
                 </h1>
 
-                <h2 class="produto-subtitulo">
-                    {{ produto.descricao }}
-                </h2>
-
                 <p class="produto-preco">
-                    {{ produto.preco }}
+                    R$ {{ produto.preco }}
                 </p>
 
             </div>
-
 
             <!-- OPÇÕES -->
             <div class="produto-opcoes">
 
                 <div class="opcao-box">
 
-                    <label for="cor">COR:</label>
-
-                    <select id="cor">
-                        <option>Selecionar...</option>
-                        <option>Preto</option>
-                        <option>Marrom</option>
-                        <option>Bege</option>
-                    </select>
-
-                </div>
-
-                <div class="opcao-box">
-
                     <label for="tamanho">TAMANHO:</label>
 
-                    <select id="tamanho">
+                    <select id="tamanho" class="select-estilizado">
                         <option>Selecionar...</option>
+                        <option>XP</option>
+                        <option>PP</option>
                         <option>P</option>
                         <option>M</option>
                         <option>G</option>
+                        <option>GG</option>
+                        <option>XG</option>
                     </select>
 
                 </div>
 
             </div>
-
-
-            <!-- REF -->
-            <div class="produto-ref">
-
-                <label for="ref">
-                    SIMULAR REF.:
-                </label>
-
-                <input type="text" id="ref" placeholder="Ex: 00000-000">
-
-            </div>
-
-
-            <!-- COMPRA -->
-            <div class="produto-compra">
-
-                <div class="quantidade-box">
-
-                    <button type="button">-</button>
-
-                    <span>1</span>
-
-                    <button type="button">+</button>
-
-                </div>
-
-                <button class="btn-comprar">
-
-                    COMPRAR
-
-                </button>
-
-            </div>
-
-            <br>
 
             <!-- CARRINHO -->
             <form action="{{ url_for('adicionar_carrinho', id_produto=produto.id) }}" method="POST">
 
-                <button type="submit" class="btn btn-dark">
+                <button type="submit" class="btn-carrinho">
 
                     <i class="bi bi-cart-plus"></i>
-
                     Adicionar ao carrinho
 
                 </button>
@@ -123,7 +72,6 @@
 
 
 <!-- RELACIONADOS -->
-
 <section class="relacionados">
 
     <h2 class="relacionados-titulo">
@@ -139,7 +87,6 @@
             <img src="{{ url_for('static', filename=relacionado.imagem) }}" alt="{{ relacionado.nome }}">
 
         </a>
-
 
         {% endfor %}
 
