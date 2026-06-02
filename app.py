@@ -32,7 +32,7 @@ def home():
 
 
 # =========================
-# CATÁLOGO (COM CATEGORIAS)
+# CATÁLOGO
 # =========================
 @app.route("/catalogo")
 def catalogo():
@@ -43,30 +43,59 @@ def catalogo():
     min_preco = request.args.get("min")
     max_preco = request.args.get("max")
 
-    filtrado = bool(busca or categoria or min_preco or max_preco)
+    filtrado = bool(
+        busca or
+        categoria or
+        min_preco or
+        max_preco
+    )
 
     query = "SELECT * FROM produtos WHERE 1=1"
     params = []
 
+    # BUSCA AMPLIADA
     if busca:
-        query += " AND nome LIKE %s"
-        params.append(f"%{busca}%")
 
+        query += """
+            AND (
+                nome LIKE %s
+                OR descricao LIKE %s
+                OR categoria LIKE %s
+            )
+        """
+
+        termo = f"%{busca}%"
+
+        params.extend([
+            termo,
+            termo,
+            termo
+        ])
+
+    # FILTRO DE CATEGORIA
     if categoria:
+
         query += " AND categoria = %s"
         params.append(categoria)
 
+    # FILTRO PREÇO MÍNIMO
     if min_preco:
+
         query += " AND preco >= %s"
         params.append(min_preco)
 
+    # FILTRO PREÇO MÁXIMO
     if max_preco:
+
         query += " AND preco <= %s"
         params.append(max_preco)
 
     cursor = mysql.connection.cursor()
+
     cursor.execute(query, params)
+
     dados = cursor.fetchall()
+
     cursor.close()
 
     produtos = [
@@ -81,7 +110,6 @@ def catalogo():
         for p in dados
     ]
 
-    # 🔥 ORGANIZAÇÃO POR CATEGORIA (IMPORTANTE PRO SEU HTML)
     categorias = {
         "bolsas": [],
         "calcas": [],
@@ -96,20 +124,35 @@ def catalogo():
     }
 
     for p in produtos:
+
         cat = p["categoria"]
+
         if cat in categorias:
             categorias[cat].append(p)
+
+    nomes_categorias = {
+        "bolsas": "Bolsas",
+        "calcas": "Calças",
+        "camisas": "Camisas",
+        "casacos": "Casacos",
+        "sapatos": "Sapatos",
+        "chapeus": "Chapéus",
+        "pijamas": "Pijamas",
+        "cintos": "Cintos",
+        "maquiagens": "Maquiagens",
+        "joias": "Joias"
+    }
 
     return render_template(
         "catalogo.html",
         categorias=categorias,
+        nomes_categorias=nomes_categorias,
         busca=busca,
         categoria=categoria,
         min=min_preco,
         max=max_preco,
         filtrado=filtrado
     )
-
 
 # =========================
 # ITEM
@@ -461,6 +504,7 @@ def meus_pedidos():
 
     cursor = mysql.connection.cursor()
 
+    # pedidos do usuário
     cursor.execute("""
         SELECT id, total, data_pedido
         FROM pedidos
@@ -468,19 +512,58 @@ def meus_pedidos():
         ORDER BY id DESC
     """, (session["usuario_id"],))
 
-    dados = cursor.fetchall()
+    dados_pedidos = cursor.fetchall()
+
+    pedidos = []
+
+    contador = 1
+
+    for pedido in dados_pedidos:
+
+        pedido_id = pedido[0]
+
+        # buscar itens daquele pedido
+        cursor.execute("""
+            SELECT
+                produtos.descricao,
+                produtos.imagem,
+                itens_pedido.quantidade,
+                itens_pedido.preco
+            FROM itens_pedido
+            JOIN produtos
+            ON itens_pedido.produto_id = produtos.id
+            WHERE itens_pedido.pedido_id = %s
+        """, [pedido_id])
+
+        itens = cursor.fetchall()
+
+        produtos = []
+
+        for item in itens:
+
+            produtos.append({
+                "descricao": item[0],
+                "imagem": item[1],
+                "quantidade": item[2],
+                "preco": item[3]
+            })
+
+        pedidos.append({
+            "numero": contador,
+            "id": pedido_id,
+            "total": pedido[1],
+            "data": pedido[2],
+            "produtos": produtos
+        })
+
+        contador += 1
+
     cursor.close()
 
-    pedidos = [
-        {
-            "id": p[0],
-            "total": p[1],
-            "data": p[2]
-        }
-        for p in dados
-    ]
-
-    return render_template("meus_pedidos.html", pedidos=pedidos)
+    return render_template(
+        "meus_pedidos.html",
+        pedidos=pedidos
+    )
 
 # =========================
 # RUN

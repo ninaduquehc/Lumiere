@@ -1,45 +1,64 @@
 {% extends "base.html" %}
 
+{% block titulo %}/Meus Pedidos{% endblock %}
+
 {% block content %}
 
-<div class="container py-5">
+<section class="container py-5">
 
-    <h2 class="text-center mb-5">Meus Pedidos</h2>
+    <h1 class="titulo-login text-center mb-5">
+        Meus Pedidos
+    </h1>
 
-    {% if pedidos %}
+    {% for pedido in pedidos %}
 
-        <div class="row g-4">
+    <div class="pedido-card">
 
-            {% for pedido in pedidos %}
+        <h3>
+            Pedido #{{ pedido.numero }}
+        </h3>
 
-            <div class="col-12 col-md-6 col-lg-4">
+        <p>
+            Data: {{ pedido.data }}
+        </p>
 
-                <div class="card shadow-sm p-3 h-100">
+        <p>
+            Total: R$ {{ pedido.total }}
+        </p>
 
-                    <h5>Pedido #{{ pedido.id }}</h5>
+        <hr>
 
-                    <p class="mb-1">
-                        <strong>Total:</strong> R$ {{ "%.2f"|format(pedido.total) }}
-                    </p>
+        {% for produto in pedido.produtos %}
 
-                    <p class="mb-0 text-muted">
-                        <strong>Data:</strong> {{ pedido.data }}
-                    </p>
+        <div class="d-flex align-items-center gap-4 mb-3">
 
-                </div>
+            <img
+                src="{{ url_for('static', filename=produto.imagem) }}"
+                width="90"
+            >
+
+            <div>
+
+                <h5>{{ produto.descricao }}</h5>
+
+                <p>
+                    Quantidade: {{ produto.quantidade }}
+                </p>
+
+                <p>
+                    R$ {{ produto.preco }}
+                </p>
 
             </div>
 
-            {% endfor %}
-
         </div>
 
-    {% else %}
+        {% endfor %}
 
-        <p class="text-center">Você ainda não fez pedidos.</p>
+    </div>
 
-    {% endif %}
+    {% endfor %}
 
-</div>
+</section>
 
 {% endblock %}

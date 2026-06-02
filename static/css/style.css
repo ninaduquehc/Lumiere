@@ -1,5 +1,5 @@
 /* ========================================
-   VARIÁVEIS
+   1. VARIÁVEIS
 ======================================== */
 
 :root {
@@ -15,970 +15,1259 @@
 
 
 /* ========================================
-   RESET
+   2. RESET
 ======================================== */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-img {
-    display: block;
-    max-width: 100%;
+html,
+body{
+    height:100%;
 }
 
-ul {
-    list-style: none;
+body{
+    display:flex;
+    flex-direction:column;
+
+    font-family:'Poppins',sans-serif;
+    background-color:var(--cor-creme);
+    color:var(--cor-carvao);
+
+    overflow-x:hidden;
 }
 
-a {
-    text-decoration: none;
+main{
+    flex:1;
+    padding:.5rem 1rem;
 }
 
-
-/* ========================================
-   BODY
-======================================== */
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--cor-creme);
-    color: var(--cor-carvao);
-    overflow-x: hidden;
+img{
+    display:block;
+    max-width:100%;
+    border-radius:.8rem;
 }
 
-
-/* ========================================
-   TIPOGRAFIA
-======================================== */
-
-h1, h2, h3, .titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    letter-spacing: 0.125rem;
+ul{
+    list-style:none;
 }
 
-
-/* ========================================
-   HEADER
-======================================== */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background-color: var(--cor-carvao);
-    box-shadow: 0 0.125rem 0.625rem var(--cor-preto-transparente);
+a{
+    text-decoration:none;
 }
 
 
 /* ========================================
-   LOGO
+   3. TIPOGRAFIA
 ======================================== */
 
-.logo-img {
-    width: 9rem;
-    transition: transform 0.3s ease;
+h1,
+h2,
+h3,
+.titulo{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:600;
+
+    letter-spacing:.125rem;
 }
 
-.logo-img:hover {
-    transform: scale(1.05);
+.titulo-categoria{
+
+    margin-top:5rem;
+    margin-bottom:4rem;
+
+    text-align:center;
+
+    color:var(--cor-carvao);
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    letter-spacing:.5rem;
 }
 
 
 /* ========================================
-   NAVBAR
+   4. HEADER
 ======================================== */
 
-.navbar .navbar-nav .nav-link {
-    color: var(--cor-creme);
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
+header{
 
-.navbar .navbar-nav .nav-link:hover {
-    color: var(--cor-dourado);
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    background-color:var(--cor-carvao);
+
+    box-shadow:
+    0 .125rem .625rem
+    var(--cor-preto-transparente);
 }
 
 
 /* ========================================
-   BUSCA (SEARCH BAR)
+   5. LOGO
 ======================================== */
 
-/* ========================================
-   SEARCH BAR (E-COMMERCE PREMIUM)
-======================================== */
+.logo-img{
 
-.search-bar {
-    display: flex;
-    align-items: center;
+    width:9rem;
 
-    width: 45%;
-    max-width: 42rem;
-
-    padding: 0.4rem;
-
-    background-color: var(--cor-dourado);
-
-    border-radius: 5rem;
-
-    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.15);
-
-    overflow: hidden;
-
-    transition: 0.3s ease;
+    transition:.3s ease;
 }
 
-.search-bar:focus-within {
-    transform: scale(1.02);
-    box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.25);
-}
+.logo-img:hover{
 
-/* ÍCONE */
-.search-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0 0.8rem;
-
-    color: var(--cor-carvao);
-    opacity: 0.7;
-}
-
-/* INPUT */
-.search-bar input {
-    flex: 1;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    color: var(--cor-carvao);
-
-    font-size: 0.95rem;
-
-    padding: 0.6rem 0.5rem;
-}
-
-.search-bar input::placeholder {
-    color: var(--cor-carvao);
-    opacity: 0.7;
-}
-
-/* SELECT (CATEGORIA) */
-.search-select {
-    border: none;
-    outline: none;
-
-    background-color: var(--cor-marrom);
-
-    color: var(--cor-creme);
-
-    padding: 0.6rem 1rem;
-
-    border-radius: 2rem;
-
-    font-size: 0.85rem;
-
-    cursor: pointer;
-
-    margin-right: 0.5rem;
-
-    transition: 0.3s;
-}
-
-.search-select:hover {
-    background-color: var(--cor-carvao);
-}
-
-/* BOTÃO */
-.search-bar button {
-    border: none;
-
-    background-color: var(--cor-carvao);
-
-    color: var(--cor-creme);
-
-    padding: 0.6rem 1.2rem;
-
-    border-radius: 5rem;
-
-    font-size: 0.9rem;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.search-bar button:hover {
-    background-color: var(--cor-marrom);
-    transform: scale(1.05);
+    transform:scale(1.05);
 }
 
 
 /* ========================================
-   BOTÕES DE CATEGORIA (POPUP STYLE)
+   6. NAVBAR
 ======================================== */
 
-.categoria-btn {
-    display: inline-block;
+.navbar .navbar-nav .nav-link{
 
-    padding: 0.5rem 1.2rem;
-    margin: 0.3rem;
+    color:var(--cor-creme);
 
-    background-color: var(--cor-dourado);
-    color: var(--cor-carvao);
+    font-weight:500;
 
-    border-radius: 5rem;
+    text-transform:uppercase;
 
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-
-    transition: 0.25s ease;
-
-    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.1);
-
-    cursor: pointer;
+    transition:.3s;
 }
 
-.categoria-btn:hover {
-    background-color: var(--cor-marrom);
-    color: var(--cor-creme);
+.navbar .navbar-nav .nav-link:hover{
 
-    transform: translateY(-3px) scale(1.05);
-
-    box-shadow: 0 0.6rem 1.2rem rgba(0,0,0,0.2);
-}
-
-.categoria-btn.active {
-    background-color: var(--cor-carvao);
-    color: var(--cor-creme);
-
-    transform: scale(1.05);
-}
-
-/* ========================================
-   CATALOGO
-======================================== */
-
-/* CENTRALIZA OS ITENS DO CATÁLOGO */
-.catalogo-section .col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* CENTRALIZA O LINK */
-.catalogo-section .col a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-/* GARANTE IMAGEM BONITA E CENTRALIZADA */
-.catalogo-section .categoria-img {
-    width: 100%;
-    max-width: 18rem; /* evita imagem gigante ocupando tudo */
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-
-    display: block;
-    margin: 0 auto;
-
-    border-radius: 0.8rem;
-
-    transition: transform 0.3s ease;
-}
-
-.catalogo-section .categoria-img:hover {
-    transform: scale(1.03);
-}
-
-.catalogo-section .col {
-    padding: 0.5rem;
-}
-
-.catalogo-section .categoria-img {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-/* ========================================
-   HERO / BANNER
-======================================== */
-
-.hero {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.carousel, .carousel-inner, .carousel-item {
-    margin: 0;
-    padding: 0;
-}
-
-.banner-img {
-    width: 100%;
-    height: 90vh;
-    object-fit: cover;
-}
-
-.hero-tag {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-
-    background-color: var(--cor-dourado);
-    border-radius: 99rem;
-
-    color: var(--cor-branco);
-
-    font-size: 0.9rem;
-    font-weight: 600;
+    color:var(--cor-dourado);
 }
 
 
 /* ========================================
-   TÍTULOS DE CATEGORIA
+   7. SEARCH BAR
 ======================================== */
 
-.titulo-categoria {
-    margin-top: 5rem;
-    margin-bottom: 4rem;
+.search-bar{
 
-    text-align: center;
+    display:flex;
+    align-items:center;
 
-    color: var(--cor-carvao);
+    width:100%;
+    max-width:35rem;
 
-    font-size: clamp(3rem, 6vw, 5rem);
+    min-width:17rem;
 
-    letter-spacing: 0.5rem;
+    padding:.4rem;
+
+    background-color:var(--cor-dourado);
+
+    border-radius:5rem;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 .4rem 1rem rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+.search-bar button{
+
+    border:none;
+
+    background-color:var(--cor-carvao);
+
+    color:var(--cor-creme);
+
+    padding:.6rem 1.5rem;
+
+    border-radius:5rem;
+
+    white-space: nowrap; /* impede quebrar/cortar texto */
+
+    flex-shrink:0; /* impede o botão encolher */
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.search-bar:focus-within{
+
+    transform:scale(1.02);
+
+    box-shadow:
+    0 .6rem 1.5rem
+    rgba(0,0,0,.25);
+}
+
+.search-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0 .8rem;
+
+    color:var(--cor-carvao);
+
+    opacity:.7;
+}
+
+.search-bar input{
+
+    flex:1;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    color:var(--cor-carvao);
+
+    padding:.6rem .5rem;
+
+    font-size:.95rem;
+}
+
+.search-bar input::placeholder{
+
+    color:var(--cor-carvao);
+
+    opacity:.7;
+}
+
+.search-select{
+
+    border:none;
+    outline:none;
+
+    background-color:var(--cor-marrom);
+
+    color:var(--cor-creme);
+
+    padding:.6rem 1rem;
+
+    border-radius:2rem;
+
+    margin-right:.5rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.search-select:hover{
+
+    background-color:var(--cor-carvao);
+}
+
+.search-bar button{
+
+    border:none;
+
+    background-color:var(--cor-carvao);
+
+    color:var(--cor-creme);
+
+    padding:.6rem 1.2rem;
+
+    border-radius:5rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.search-bar button:hover{
+
+    background-color:var(--cor-marrom);
+
+    transform:scale(1.05);
+}
+
+/* ========================================
+   8. BOTÕES DE CATEGORIA
+======================================== */
+
+.categoria-btn{
+
+    display:inline-block;
+
+    padding:.5rem 1.2rem;
+    margin:.3rem;
+
+    background-color:var(--cor-dourado);
+
+    color:var(--cor-carvao);
+
+    border-radius:5rem;
+
+    font-weight:500;
+    font-size:.85rem;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    box-shadow:
+    0 .2rem .5rem
+    rgba(0,0,0,.1);
+}
+
+.categoria-btn:hover{
+
+    background-color:var(--cor-marrom);
+
+    color:var(--cor-creme);
+
+    transform:
+    translateY(-3px)
+    scale(1.05);
+
+    box-shadow:
+    0 .6rem 1.2rem
+    rgba(0,0,0,.2);
+}
+
+.categoria-btn.active{
+
+    background-color:var(--cor-carvao);
+
+    color:var(--cor-creme);
+
+    transform:scale(1.05);
+}
+
+/* ========================================
+   9. HERO / BANNER
+======================================== */
+
+.hero{
+
+    width:100vw;
+
+    margin:0;
+
+    padding:0;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item{
+
+    margin:0;
+
+    padding:0;
+}
+
+.banner-img{
+
+    width:100%;
+
+    height:90vh;
+
+    object-fit:cover;
+
+    border-radius:0; /* remove bordas arredondadas */
+}
+
+main{
+    padding:0;
+}
+
+.hero .container,
+.hero .container-fluid{
+    padding:0;
+    margin:0;
+    max-width:100%;
+}
+
+.hero img{
+    border-radius:0 !important;
+}
+
+/* ========================================
+   10. GRID GLOBAL
+======================================== */
+
+.row{
+    align-items:stretch;
+}
+
+.col{
+    display:flex;
 }
 
 
 /* ========================================
-   GRID
+   11. CATÁLOGO
 ======================================== */
 
-.row {
-    align-items: stretch;
+.catalogo-section{
+
+    padding-left:1.5rem;
+    padding-right:1.5rem;
 }
 
-.col {
-    display: flex;
+.catalogo-section .row{
+
+    justify-content:center;
+}
+
+.catalogo-section .col{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:.5rem;
+}
+
+.catalogo-section .col a{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+}
+
+.catalogo-section .categoria-img{
+
+    width:100%;
+
+    max-width:18rem;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    margin:0 auto;
+
+    border-radius:.8rem;
+
+    box-shadow:
+    0 .5rem 1rem
+    rgba(0,0,0,.15);
+
+    transition:.3s ease;
+}
+
+.catalogo-section .categoria-img:hover{
+
+    transform:scale(1.03);
 }
 
 
 /* ========================================
-   IMAGENS CATÁLOGO
+   12. LOGIN
 ======================================== */
 
-.col .categoria-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+.login-section{
 
-    object-fit: cover;
-    object-position: center;
+    width:100%;
 
-    transition: transform 0.3s ease;
+    padding:4rem 2rem;
+
+    background-color:var(--cor-creme);
 }
 
-.col .categoria-img:hover {
-    transform: scale(1.02);
+.login-box{
+
+    max-width:70rem;
+
+    margin:0 auto;
+
+    padding:4rem;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:1rem;
+
+    background-color:
+    var(--cor-dourado-login);
+
+    border-radius:2rem;
+
+    box-shadow:
+    0 .5rem 1rem
+    rgba(0,0,0,.15);
 }
 
+.login-form{
 
-/* ========================================
-   LOGIN
-======================================== */
+    width:100%;
 
-.login-section {
-    width: 100%;
-    padding: 4rem 2rem;
+    max-width:30rem;
 
-    background-color: var(--cor-creme);
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.2rem;
 }
 
-.login-box {
-    max-width: 90rem;
-    margin: 0 auto;
+.login-form-area{
 
-    padding: 2rem;
+    flex:1;
 
-    display: flex;
-    gap: 4rem;
+    display:flex;
 
-    background-color: var(--cor-dourado-login);
+    flex-direction:column;
+
+    align-items:center;
+
+    padding-left:2rem;
 }
 
-.login-banner { flex: 1; }
+.login-banner{
 
-.login-banner img { width: 100%; }
+    margin-left:4rem;
+}
 
-.login-form-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.login-banner img{
+
+    width:100%;
+
+    max-width:20rem;
+
+    aspect-ratio:4/5;
+
+    object-fit:cover;
+
+    border-radius:1.5rem;
+}
+
+.titulo-login{
+
+    margin-bottom:2rem;
+
+    font-size:4rem;
 }
 
 
 /* FORM LOGIN */
-.login-form input {
-    width: 80%;
-    padding: 1.2rem 1.5rem;
 
-    border: none;
-    outline: none;
+.login-form input{
 
-    background-color: var(--cor-marrom-input);
-    color: var(--cor-branco);
+    width:100%;
 
-    font-family: 'Cormorant Garamond', serif;
+    padding:1rem 1.5rem;
+
+    border:none;
+    outline:none;
+
+    border-radius:999px;
+
+    background-color:var(--cor-creme);
+
+    color:var(--cor-carvao);
+
+    font-size:1rem;
+
+    box-shadow:
+    0 .2rem .5rem
+    rgba(0,0,0,.1);
+
+    transition:.3s;
 }
 
-.login-form button {
-    width: 14rem;
-    padding: 1rem;
+.login-form input:focus{
 
-    border: none;
+    transform:scale(1.02);
 
-    background-color: var(--cor-marrom-input);
-    color: var(--cor-branco);
-
-    cursor: pointer;
-
-    transition: 0.3s;
+    box-shadow:
+    0 0 0 3px
+    rgba(198,167,94,.4);
 }
 
-.login-form button:hover {
-    transform: scale(1.03);
+.login-form button{
+
+    width:100%;
+
+    padding:1rem;
+
+    border:none;
+
+    border-radius:999px;
+
+    background-color:var(--cor-carvao);
+
+    color:var(--cor-creme);
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.login-form button:hover{
+
+    transform:translateY(-2px);
+
+    background-color:var(--cor-marrom);
+}
+
+.cadastro-link{
+
+    margin-top:2rem;
+
+    text-align:center;
+}
+
+.cadastro-link a{
+
+    color:var(--cor-carvao);
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.cadastro-link a:hover{
+
+    color:var(--cor-branco);
+}
+
+/* ========================================
+   13. PRODUTO (ITEM PAGE)
+======================================== */
+
+.produto-section{
+
+    padding:2rem 0;
+}
+
+.produto-container{
+
+    max-width:68rem;
+
+    margin:2rem auto;
+
+    display:grid;
+
+    grid-template-columns:25rem 1fr;
+
+    gap:2rem;
+
+    background-color:var(--cor-dourado);
+
+    padding:1.5rem;
+
+    border-radius:1rem;
+}
+
+.produto-imagem{
+
+    width:100%;
+
+    max-width:32rem;
+
+    aspect-ratio:1/1;
+
+    margin:0 auto;
+
+    overflow:hidden;
+
+    border-radius:1rem;
+
+    flex-shrink:0;
+}
+
+.produto-imagem img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:transform .3s ease;
+}
+
+.produto-imagem img:hover{
+
+    transform:scale(1.03);
+}
+
+
+/* INFO PRODUTO */
+
+.produto-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.8rem;
 }
 
 
 /* ========================================
-   PRODUTO (ITEM)
+   14. BOTÕES PADRONIZADOS
 ======================================== */
 
-.produto-container {
-    max-width: 68rem;
-    margin: 0 auto;
+.btn{
 
-    display: grid;
-    grid-template-columns: 25rem 1fr; 
+    border-radius:.6rem !important;
 
-    gap: 2rem;
-
-    background-color: var(--cor-dourado);
-    padding: 1rem;
+    transition:.25s ease;
 }
 
-.produto-imagem {
-    width: 100%;
-    max-width: 50rem; 
-    aspect-ratio: 1 / 1;
+.btn:hover{
 
-    margin: 0 auto;
-    overflow: hidden;
-
-    border-radius: 1rem;
-    flex-shrink: 0;
+    transform:translateY(-2px);
 }
 
-.produto-imagem img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+
+/* botão bootstrap escuro */
+
+.btn-dark{
+
+    background-color:
+    var(--cor-carvao) !important;
+
+    border:none !important;
 }
 
-/* INFO */
-.produto-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+.btn-dark:hover{
+
+    background-color:#1f1f1f !important;
 }
 
-html, body {
-    height: 100%;
+
+/* botão comprar */
+
+.btn-comprar{
+
+    border:none;
+
+    padding:.9rem 2.5rem;
+
+    background-color:
+    var(--cor-carvao);
+
+    color:var(--cor-creme);
+
+    font-family:
+    'Cormorant Garamond',
+    serif;
+
+    font-size:1.3rem;
+
+    letter-spacing:.08rem;
+
+    border-radius:.6rem;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
+.btn-comprar:hover{
+
+    transform:
+    translateY(-2px);
+
+    background-color:#1f1f1f;
 }
 
-/* MAIN cresce e empurra footer pra baixo */
-main {
-    flex: 1;
+
+/* botão carrinho */
+
+.btn-carrinho{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.5rem;
+
+    padding:.8rem 1.2rem;
+
+    background-color:transparent;
+
+    border:1px solid
+    var(--cor-carvao);
+
+    color:var(--cor-carvao);
+
+    border-radius:.6rem;
+
+    transition:.3s;
 }
+
+.btn-carrinho:hover{
+
+    background-color:
+    var(--cor-carvao);
+
+    color:var(--cor-creme);
+}
+
 
 /* ========================================
-   FOOTER 
-======================================== */
-.footer-custom {
-    background-color: var(--cor-dourado);
-
-    padding: 3rem 2rem;
-
-    margin-top: auto;
-
-    border-top: 1px solid rgba(235, 212, 161, 0.15);
-}
-
-/* CONTAINER */
-.social-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-    gap: 2.5rem;
-}
-
-/* ITEM SOCIAL */
-.social-item {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-
-    color: var(--cor-carvao);
-
-    font-size: 1rem;
-
-    padding: 0.5rem 1rem;
-
-    border-radius: 0.5rem;
-
-    transition: all 0.25s ease;
-
-    opacity: 0.85;
-}
-
-/* ÍCONE */
-.social-item i {
-    font-size: 1.4rem;
-    color: var(--cor-carvao);
-    transition: 0.25s ease;
-}
-
-/* HOVER LIMPO */
-.social-item:hover {
-    opacity: 1;
-    transform: translateY(-2px);
-    color: var(--cor-branco);
-}
-
-.social-item:hover i {
-    color: var(--cor-branco);
-}
-
-/* ========================================
-   PADRÃO GLOBAL DE IMAGENS (PROJETO TODO)
+   15. INPUTS GLOBAIS
 ======================================== */
 
-img {
-    border-radius: 0.8rem;
-}
-
-/* ========================================
-   PRODUTO PAGE (ITEM)
-======================================== */
-
-.produto-container {
-    background-color: var(--cor-dourado);
-    padding: 1.5rem;
-    border-radius: 1rem;
-}
-
-/* imagem principal mais elegante */
-.produto-imagem {
-    width: 100%;
-    max-width: 32rem;
-    aspect-ratio: 1 / 1;
-    margin: 0 auto;
-    overflow: hidden;
-
-    border-radius: 1rem;
-}
-
-.produto-imagem img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.produto-imagem img:hover {
-    transform: scale(1.03);
-}
-
-/* ========================================
-   BOTÕES PADRONIZADOS
-======================================== */
-
-.btn-comprar {
-    border: none;
-    padding: 0.9rem 2.5rem;
-
-    background-color: var(--cor-carvao);
-    color: var(--cor-creme);
-
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.08rem;
-
-    border-radius: 0.6rem;
-
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-comprar:hover {
-    transform: translateY(-2px);
-    background-color: #1f1f1f;
-}
-
-/* botão carrinho (uniforme com comprar) */
-.btn-carrinho {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    padding: 0.8rem 1.2rem;
-
-    background-color: transparent;
-    border: 1px solid var(--cor-carvao);
-
-    color: var(--cor-carvao);
-
-    border-radius: 0.6rem;
-
-    transition: 0.3s;
-}
-
-.btn-carrinho:hover {
-    background-color: var(--cor-carvao);
-    color: var(--cor-creme);
-}
-
-/* ========================================
-   RELACIONADOS (CORREÇÃO PRINCIPAL)
-======================================== */
-
-.relacionados-grid {
-    max-width: 90rem;
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-}
-
-.relacionado-item {
-    display: block;
-    overflow: hidden;
-    border-radius: 0.8rem;
-
-    transition: transform 0.3s ease;
-}
-
-.relacionado-item img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-
-    display: block;
-}
-
-.relacionado-item:hover {
-    transform: scale(1.05);
-}
-
-/* responsivo forte */
-@media (max-width: 62rem) {
-    .relacionados-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* ========================================
-   MARGEM GLOBAL DAS PÁGINAS (ITEM + CATÁLOGO)
-======================================== */
-
-main {
-    padding: 0.5rem 1rem;
-}
-
-/* evita conteúdo colado nas laterais */
-.catalogo-section,
-.produto-section,
-.relacionados {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-/* ========================================
-   MELHORAR CENTRALIZAÇÃO DO CATÁLOGO
-======================================== */
-
-.catalogo-section .row {
-    justify-content: center;
-}
-
-.catalogo-section .col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.catalogo-section a {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-/* reforço visual da imagem */
-.catalogo-section .categoria-img {
-    margin: 0 auto;
-}
-
-/* ========================================
-   ITEM PAGE - ESPAÇAMENTO GERAL
-======================================== */
-
-.produto-section {
-    padding: 2rem 0;
-}
-
-.produto-container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-/* ========================================
-   RELACIONADOS - MAIS RESPIRADO
-======================================== */
-
-.relacionados {
-    padding: 3rem 2rem;
-}
-
-.relacionados-titulo {
-    text-align: center;
-    margin-bottom: 2rem;
-    letter-spacing: 0.3rem;
-}
-
-/* já existia grid, só reforço spacing */
-.relacionados-grid {
-    padding: 0 1rem;
-}
-
-/* ========================================
-   BOTÕES / INPUTS / "POPUPS VISUAIS"
-======================================== */
-
-/* inputs gerais */
 input,
-select {
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
+select{
+
+    border-radius:.5rem;
+
+    border:none;
+
+    outline:none;
 }
 
-/* foco bonito */
 input:focus,
-select:focus {
-    box-shadow: 0 0 0 2px var(--cor-dourado);
+select:focus{
+
+    box-shadow:
+    0 0 0 2px
+    var(--cor-dourado);
 }
 
-/* botões padrão do bootstrap (override leve) */
-.btn {
-    border-radius: 0.6rem !important;
-    transition: 0.25s ease;
+
+/* ========================================
+   16. SELECT ESTILIZADO
+======================================== */
+
+.select-estilizado{
+
+    width:100%;
+
+    padding:
+    .8rem 1rem;
+
+    padding-right:2.5rem;
+
+    border-radius:.6rem;
+
+    border:
+    1px solid
+    rgba(0,0,0,.15);
+
+    background-color:
+    var(--cor-creme);
+
+    color:var(--cor-carvao);
+
+    font-family:
+    'Poppins',
+    sans-serif;
+
+    font-size:.95rem;
+
+    cursor:pointer;
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    -moz-appearance:none;
+
+    transition:.25s ease;
+
+    box-shadow:
+    0 .2rem .5rem
+    rgba(0,0,0,.08);
+
+    background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23292929' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+
+    background-position:
+    right .8rem center;
+
+    background-size:1rem;
 }
 
-.btn:hover {
-    transform: translateY(-2px);
+.select-estilizado:hover{
+
+    border-color:
+    var(--cor-dourado);
+
+    transform:
+    translateY(-1px);
 }
 
-/* botão escuro padrão melhorado */
-.btn-dark {
-    background-color: var(--cor-carvao) !important;
-    border: none !important;
+.select-estilizado:focus{
+
+    border-color:
+    var(--cor-dourado);
+
+    box-shadow:
+    0 0 0 3px
+    rgba(198,167,94,.25);
 }
 
-.btn-dark:hover {
-    background-color: #1f1f1f !important;
+
+/* ========================================
+   17. RELACIONADOS
+======================================== */
+
+.relacionados{
+
+    padding:3rem 2rem;
+}
+
+.relacionados-titulo{
+
+    text-align:center;
+
+    margin-bottom:2rem;
+
+    letter-spacing:.3rem;
+}
+
+.relacionados-grid{
+
+    max-width:90rem;
+
+    margin:0 auto;
+
+    padding:0 1rem;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:1rem;
+}
+
+.relacionado-item{
+
+    display:block;
+
+    overflow:hidden;
+
+    border-radius:.8rem;
+
+    transition:
+    transform .3s ease;
+}
+
+.relacionado-item img{
+
+    width:100%;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.relacionado-item:hover{
+
+    transform:scale(1.05);
 }
 
 /* ========================================
-   CORREÇÃO FINAL DE IMAGENS (GARANTIA GLOBAL)
+   18. CARRINHO
+======================================== */
+
+.carrinho-section{
+
+    padding:3rem 2rem;
+}
+
+/* card do item */
+
+.carrinho-item{
+
+    padding:1.5rem;
+
+    margin-bottom:1.5rem;
+
+    background-color:
+    var(--cor-dourado);
+
+    border-radius:1rem;
+
+    box-shadow:
+    0 .4rem 1rem
+    rgba(0,0,0,.08);
+}
+
+/* imagem */
+
+.carrinho-item img{
+
+    width:100%;
+
+    max-width:20rem;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+}
+
+/* textos internos */
+
+.carrinho-item .col{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.4rem;
+}
+
+.carrinho-item h4{
+
+    margin-bottom:.5rem;
+
+    line-height:1.3;
+}
+
+.carrinho-item p{
+
+    margin-bottom:.3rem;
+
+    line-height:1.4;
+}
+
+
+/* quantidade */
+
+.carrinho-quantidade{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    margin:.5rem 0;
+}
+
+.carrinho-quantidade .btn{
+
+    padding:.2rem .7rem;
+
+    font-weight:bold;
+}
+
+
+/* total */
+
+.carrinho-total{
+
+    margin-top:2rem;
+
+    padding:1.5rem;
+
+    background-color:
+    var(--cor-carvao);
+
+    color:var(--cor-creme);
+
+    border-radius:1rem;
+
+    text-align:center;
+}
+
+
+/* ========================================
+   19. PEDIDOS
+======================================== */
+
+.pedido-card{
+
+    background-color:
+    var(--cor-dourado);
+
+    padding:1.8rem;
+
+    margin-bottom:1.5rem;
+
+    border-radius:1rem;
+
+    box-shadow:
+    0 .4rem 1rem
+    rgba(0,0,0,.12);
+
+    transition:.3s ease;
+}
+
+.pedido-card:hover{
+
+    transform:
+    translateY(-4px);
+}
+
+.pedido-card h3{
+
+    color:var(--cor-carvao);
+
+    margin-bottom:1rem;
+}
+
+.pedido-card p{
+
+    margin-bottom:.5rem;
+}
+
+
+/* ========================================
+   20. FOOTER
+======================================== */
+
+.footer-custom{
+
+    background-color:
+    var(--cor-dourado);
+
+    padding:3rem 2rem;
+
+    margin-top:auto;
+
+    border-top:
+    1px solid
+    rgba(235,212,161,.15);
+}
+
+.social-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:2.5rem;
+}
+
+.social-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.7rem;
+
+    color:var(--cor-carvao);
+
+    font-size:1rem;
+
+    padding:.5rem 1rem;
+
+    border-radius:.5rem;
+
+    opacity:.85;
+
+    transition:all .25s ease;
+}
+
+.social-item i{
+
+    font-size:1.4rem;
+
+    color:var(--cor-carvao);
+
+    transition:.25s ease;
+}
+
+.social-item:hover{
+
+    opacity:1;
+
+    transform:
+    translateY(-2px);
+
+    color:var(--cor-branco);
+}
+
+.social-item:hover i{
+
+    color:var(--cor-branco);
+}
+
+
+/* ========================================
+   21. CORREÇÃO GLOBAL DE IMAGENS
 ======================================== */
 
 .catalogo-section img,
 .produto-section img,
-.relacionados img {
-    border-radius: 0.9rem;
+.relacionados img{
+
+    border-radius:.9rem;
 }
+
 
 /* ========================================
-   SELECTS (COR / TAMANHO - ITEM PAGE)
+   22. RESPONSIVO
 ======================================== */
 
-.select-estilizado {
-    width: 100%;
-    padding: 0.8rem 1rem;
+@media (max-width:62rem){
 
-    border-radius: 0.6rem;
-    border: 1px solid rgba(0,0,0,0.15);
+    .search-bar{
 
-    background-color: var(--cor-creme);
-    color: var(--cor-carvao);
+        width:100%;
 
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-
-    cursor: pointer;
-
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    transition: 0.25s ease;
-
-    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.08);
-}
-
-/* hover */
-.select-estilizado:hover {
-    border-color: var(--cor-dourado);
-    transform: translateY(-1px);
-}
-
-/* focus */
-.select-estilizado:focus {
-    outline: none;
-    border-color: var(--cor-dourado);
-    box-shadow: 0 0 0 3px rgba(198, 167, 94, 0.25);
-}
-
-/* seta custom (visual mais moderno) */
-.select-estilizado {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23292929' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.8rem center;
-    background-size: 1rem;
-    padding-right: 2.5rem;
-}
-
-/* ========================================
-   CARRINHO - ESPAÇAMENTO LIMPO
-======================================== */
-
-.carrinho-section {
-    padding: 3rem 2rem;
-}
-
-/* cada item do carrinho */
-.carrinho-item {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-
-    background-color: var(--cor-dourado);
-    border-radius: 1rem;
-
-    box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.08);
-}
-
-/* imagem do produto no carrinho */
-.carrinho-item img {
-    width: 100%;
-    max-width: 20rem;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-}
-
-/* espaçamento entre quantidade */
-.carrinho-quantidade {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-/* botões + e - mais bonitos */
-.carrinho-quantidade .btn {
-    padding: 0.2rem 0.7rem;
-    font-weight: bold;
-}
-
-/* total destacado */
-.carrinho-total {
-    margin-top: 2rem;
-    padding: 1.5rem;
-
-    background-color: var(--cor-carvao);
-    color: var(--cor-creme);
-
-    border-radius: 1rem;
-
-    text-align: center;
-}
-
-/* ========================================
-   ESPAÇAMENTO INTERNO DO ITEM DO CARRINHO
-======================================== */
-
-.carrinho-item .col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem; /* controla o espaço ENTRE os textos */
-}
-
-/* títulos e textos mais “respirados” */
-.carrinho-item h4 {
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-}
-
-.carrinho-item p {
-    margin-bottom: 0.3rem;
-    line-height: 1.4;
-}
-
-/* quantidade mais afastada */
-.carrinho-quantidade {
-    margin: 0.5rem 0;
-}
-
-/* ========================================
-   RESPONSIVO
-======================================== */
-
-@media (max-width: 62rem) {
-
-    .search-bar {
-        width: 100%;
-        margin: 0.6rem 0;
+        margin:.6rem 0;
     }
 
-    .banner-img {
-        height: 60vh;
+    .banner-img{
+
+        height:60vh;
     }
 
-    .login-box {
-        flex-direction: column;
+    .produto-container{
+
+        grid-template-columns:1fr;
     }
 
-    .produto-container {
-        grid-template-columns: 1fr;
+    .relacionados-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .login-box{
+
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .login-banner{
+
+        margin-left:0;
+    }
+
+    .login-form-area{
+
+        padding-left:0;
     }
 }

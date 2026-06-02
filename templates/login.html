@@ -10,21 +10,25 @@
 
         <div class="login-form-area">
 
-            <h1>Entrar</h1>
+            <h1 class="titulo-login">
+                Entrar
+            </h1>
 
-            <form method="POST">
+            <form method="POST" class="login-form">
 
                 <input
                     type="email"
                     name="email"
                     placeholder="EMAIL"
-                    required>
+                    required
+                >
 
                 <input
                     type="password"
                     name="senha"
                     placeholder="SENHA"
-                    required>
+                    required
+                >
 
                 <button type="submit">
 
@@ -33,6 +37,16 @@
                 </button>
 
             </form>
+
+            <div class="cadastro-link">
+
+                <p>Não tem conta?</p>
+
+                <a href="{{ url_for('cadastro') }}">
+                    Cadastre-se aqui
+                </a>
+
+            </div>
 
         </div>
 

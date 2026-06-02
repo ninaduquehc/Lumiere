@@ -8,37 +8,34 @@
 
     {% for nome, lista in categorias.items() %}
 
-        {% if lista|length > 0 %}
+    {% if lista|length > 0 %}
 
-            <h1 id="{{ nome }}" class="titulo-categoria">
-                {{ nome|upper }}
-            </h1>
+    <h1 id="{{ nome }}" class="titulo-categoria">
+        {{ nomes_categorias[nome]|upper }}
+    </h1>
 
-            <section class="container py-5">
+    <section class="container py-5">
 
-                <div class="row row-cols-2 row-cols-md-3 g-4">
+        <div class="row row-cols-2 row-cols-md-3 g-4">
 
-                    {% for produto in lista %}
+            {% for produto in lista %}
 
-                        <div class="col">
-                            <a href="{{ url_for('item', id_produto=produto.id) }}">
+            <div class="col">
+                <a href="{{ url_for('item', id_produto=produto.id) }}">
 
-                                <img
-                                    src="{{ url_for('static', filename=produto.imagem) }}"
-                                    class="categoria-img"
-                                    alt="{{ produto.nome }}"
-                                >
+                    <img src="{{ url_for('static', filename=produto.imagem) }}" class="categoria-img"
+                        alt="{{ produto.nome }}">
 
-                            </a>
-                        </div>
+                </a>
+            </div>
 
-                    {% endfor %}
+            {% endfor %}
 
-                </div>
+        </div>
 
-            </section>
+    </section>
 
-        {% endif %}
+    {% endif %}
 
     {% endfor %}
 

@@ -10,8 +10,7 @@
 
         <!-- LADO ESQUERDO -->
         <div class="login-banner">
-            <img src="{{ url_for('static', filename='imagens/bem-vindo.png') }}"
-                alt="Bem-vindo">
+            <img src="{{ url_for('static', filename='imagens/bem-vindo.png') }}" alt="Bem-vindo">
         </div>
 
         <!-- LADO DIREITO -->
@@ -21,26 +20,28 @@
 
             <form action="" method="POST" class="login-form">
 
-                <input type="text"
-                    name="nome"
-                    placeholder="NOME:"
-                    required>
+                <input type="text" name="nome" placeholder="NOME:" required>
 
-                <input type="email"
-                    name="email"
-                    placeholder="EMAIL"
-                    required>
+                <input type="email" name="email" placeholder="EMAIL" required>
 
-                <input type="password"
-                    name="senha"
-                    placeholder="SENHA:"
-                    required>
+                <input type="password" name="senha" placeholder="SENHA:" required>
 
                 <button type="submit">
                     ENTER
                 </button>
 
             </form>
+
+            <div class="cadastro-link">
+
+                <p>
+                    Já tem conta?
+                    <a href="{{ url_for('login') }}">
+                        Entre aqui
+                    </a>
+                </p>
+
+            </div>
 
         </div>
 
