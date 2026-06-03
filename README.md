@@ -2,6 +2,9 @@
 Site de Loja de Roupas
 # File Tree: Lumiere
 
+
+```
+LUMIERE/
 ├── 📁 static
 │   ├── 📁 css
 │   │   └── 🎨 style.css
@@ -106,3 +109,4 @@ Site de Loja de Roupas
 ├── ⚙️ .gitignore
 ├── 📝 README.md
 └── 🐍 app.py
+```
