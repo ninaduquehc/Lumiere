@@ -1,12 +1,14 @@
 services:
 
   mysql:
-
     image: mysql:8.4
 
     container_name: lumiere_mysql
 
     restart: always
+
+    env_file:
+      - .env
 
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -19,22 +21,21 @@ services:
 
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./banco/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p${MYSQL_ROOT_PASSWORD}"]
       interval: 5s
       timeout: 5s
       retries: 10
       start_period: 15s
 
-
-
   app:
-
     build: .
 
     container_name: lumiere_app
+
+    restart: always
 
     ports:
       - "5000:5000"
@@ -42,15 +43,9 @@ services:
     env_file:
       - .env
 
-    volumes:
-      - .:/app
-
     depends_on:
       mysql:
         condition: service_healthy
-
-    restart: always
-
 
 volumes:
   mysql_data:
