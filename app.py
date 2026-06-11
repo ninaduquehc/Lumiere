@@ -50,7 +50,13 @@ def catalogo():
         max_preco
     )
 
-    query = "SELECT * FROM produtos WHERE 1=1"
+    query = """
+        SELECT produtos.id, produtos.nome, produtos.descricao,
+               produtos.preco, produtos.imagem, categorias.nome AS categoria
+        FROM produtos
+        JOIN categorias ON produtos.categoria_id = categorias.id
+        WHERE 1=1
+    """
     params = []
 
     # BUSCA AMPLIADA
@@ -58,9 +64,9 @@ def catalogo():
 
         query += """
             AND (
-                nome LIKE %s
-                OR descricao LIKE %s
-                OR categoria LIKE %s
+                produtos.nome LIKE %s
+                OR produtos.descricao LIKE %s
+                OR categorias.nome LIKE %s
             )
         """
 
@@ -75,7 +81,7 @@ def catalogo():
     # FILTRO DE CATEGORIA
     if categoria:
 
-        query += " AND categoria = %s"
+        query += " AND categorias.nome = %s"
         params.append(categoria)
 
     # FILTRO PREÇO MÍNIMO
@@ -162,7 +168,13 @@ def item(id_produto):
 
     cursor = mysql.connection.cursor()
 
-    cursor.execute("SELECT * FROM produtos WHERE id = %s", [id_produto])
+    cursor.execute("""
+        SELECT produtos.id, produtos.nome, produtos.descricao,
+               produtos.preco, produtos.imagem, categorias.nome AS categoria
+        FROM produtos
+        JOIN categorias ON produtos.categoria_id = categorias.id
+        WHERE produtos.id = %s
+    """, [id_produto])
     dado = cursor.fetchone()
 
     produto = {
@@ -175,9 +187,11 @@ def item(id_produto):
     }
 
     cursor.execute("""
-        SELECT *
+        SELECT produtos.id, produtos.nome, produtos.descricao,
+               produtos.preco, produtos.imagem
         FROM produtos
-        WHERE categoria = %s AND id != %s
+        JOIN categorias ON produtos.categoria_id = categorias.id
+        WHERE categorias.nome = %s AND produtos.id != %s
         ORDER BY RAND()
         LIMIT 5
     """, [produto["categoria"], id_produto])
