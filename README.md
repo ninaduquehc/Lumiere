@@ -87,30 +87,41 @@ A aplicação utiliza Flask como framework principal, MySQL para persistência d
 
 ## Página Inicial
 
-![Home](static/imagens/prints/print_home_1.png)
-![Home](static/imagens/prints/print_home_2.png)
+<p align="center">
+  <img src="static/imagens/prints/print_home_1.png" width="45%">
+  <img src="static/imagens/prints/print_home_2.png" width="45%">
+</p>
 
 ## Catálogo e Carrinho
 
-![Catálogo](static/imagens/prints/print_catalogo_1.png)
-![Catálogo](static/imagens/prints/print_catalogo_2.png)
-![Busca](static/imagens/prints/print_catalogo_busca.png)
-![Carrinho](static/imagens/prints/print_carrinho.png)
+<p align="center">
+  <img src="static/imagens/prints/print_catalogo_1.png" width="45%">
+  <img src="static/imagens/prints/print_catalogo_2.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="static/imagens/prints/print_catalogo_busca.png" width="45%">
+  <img src="static/imagens/prints/print_carrinho.png" width="45%">
+</p>
 
 ## Página do Produto
 
-![Item](static/imagens/prints/print_item_1.png)
-![Item](static/imagens/prints/print_item_2.png)
+<p align="center">
+  <img src="static/imagens/prints/print_item_1.png" width="45%">
+  <img src="static/imagens/prints/print_item_2.png" width="45%">
+</p>
 
 ## Login e Cadastro
-
-![Login](static/imagens/prints/print_login.png)
-![Cadastro](static/imagens/prints/print_cadastro.png)
+<p align="center">
+  <img src="static/imagens/prints/print_login.png" width="45%">
+  <img src="static/imagens/prints/print_cadastro.png" width="45%">
+</p>
 
 ## Perfil e Histórico de Pedidos
-
-![Meus Pedidos](static/imagens/prints/print_meus_pedidos.png)
-![Perfil](static/imagens/prints/print_perfil.png)
+<p align="center">
+  <img src="static/imagens/prints/print_perfil.png" width="45%">
+  <img src="static/imagens/prints/print_meus_pedidos.png" width="45%">
+</p>
 
 # File Tree (Estrutura de pastas)
 
