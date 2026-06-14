@@ -259,7 +259,7 @@ A aplicação utiliza Flask como framework principal, MySQL para persistência d
 ## 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/Lumiere.git
+git clone https://github.com/ninaduquehc/Lumiere.git
 
 cd Lumiere
 ```
