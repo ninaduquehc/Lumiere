@@ -85,49 +85,38 @@ A aplicação utiliza Flask como framework principal, MySQL para persistência d
 
 # Prints das Telas
 
-> Inserir imagens da aplicação nesta seção.
-
 ## Página Inicial
 
-```md
-![Home](print_home_1.png)
-![Home](print_home_2.png)
+![Home](static/imagens/prints/print_home_1.png)
+![Home](static/imagens/prints/print_home_2.png)
+
+## Catálogo e Carrinho
+
+![Catálogo](static/imagens/prints/print_catalogo_1.png)
+![Catálogo](static/imagens/prints/print_catalogo_2.png)
+![Busca](static/imagens/prints/print_catalogo_busca.png)
+![Carrinho](static/imagens/prints/print_carrinho.png)
+
+## Página do Produto
+
+![Item](static/imagens/prints/print_item_1.png)
+![Item](static/imagens/prints/print_item_2.png)
+
+## Login e Cadastro
+
+![Login](static/imagens/prints/print_login.png)
+![Cadastro](static/imagens/prints/print_cadastro.png)
+
+## Perfil e Histórico de Pedidos
+
+![Meus Pedidos](static/imagens/prints/print_meus_pedidos.png)
+![Perfil](static/imagens/prints/print_perfil.png)
+
+# File Tree (Estrutura de pastas)
+
 ```
-
-## Catálogo + Carrinho
-
-```md
-![Catálogo](print_catalogo_1.png)
-![Catálogo](print_catalogo_2.png)
-![Catálogo](print_catalogo_busca.png)
-![Carrinho](print_carrinho.png)
-```
-
-## Ítem
-
-```md
-![Item](print_item_1.png)
-![Item](print_item_1.png)
-```
-
-## Login + Cadastro
-
-```md
-![Login](print_login.png)
-![Cadastro](print_cadastro.png)
-```
-
-## Meus pedidos + Perfil
-
-```md
-![Meus_pedidos](print_meus_pedidos.png)
-![Perfil](print_perfil.png)
-
----
-
-# Estrutura de Pastas
-```
-LUMIERE/
+├── 📁 banco
+│   └── 📁 init.sql
 ├── 📁 static
 │   ├── 📁 css
 │   │   └── 🎨 style.css
@@ -242,9 +231,14 @@ LUMIERE/
 │   ├── 🌐 login.html
 │   ├── 🌐 meus_pedidos.html
 │   └── 🌐 perfil.html
+├── ⚙️ .dockerignore
 ├── ⚙️ .gitignore
+├── 🐳 Dockerfile
 ├── 📝 README.md
-└── 🐍 app.py
+├── 🐍 app.py
+├── ⚙️ docker-compose.yaml
+├── 📄 init.sql
+└── 📄 requirements.txt
 ```
 
 ---
@@ -268,11 +262,11 @@ Criar um arquivo chamado `.env` na raiz do projeto.
 Exemplo:
 
 ```env
-MYSQL_ROOT_PASSWORD=admin_lumiere
+MYSQL_ROOT_PASSWORD=sua_senha_root
 
 MYSQL_DB=lumiere
 
-MYSQL_USER=lumiere_user
+MYSQL_USER=lumiere_seu_user
 
 MYSQL_PASSWORD=lumiere123
 
@@ -383,7 +377,7 @@ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 ### Clonar Projeto
 
 ```bash
-git clone https://github.com/SEU-USUARIO/Lumiere.git
+git clone https://github.com/ninaduquehc/Lumiere.git
 
 cd Lumiere
 ```
@@ -461,14 +455,4 @@ Além disso, categorias e produtos são inseridos automaticamente no banco.
 
 # Autora
 
-**Marina Cavalcanti**
-
-Projeto desenvolvido para a disciplina de Desenvolvimento Web / Banco de Dados, aplicando conceitos de:
-
-* Flask
-* MySQL
-* Docker
-* Docker Compose
-* AWS EC2
-* Docker Hub
-* Modelagem Relacional
+**Marina Duque de Holanda Cavalcanti**
